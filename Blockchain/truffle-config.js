@@ -9,9 +9,11 @@ module.exports = {
       host: "127.0.0.1",
       port: 7545,
       network_id: "*"
+      // type: "quorum"
+      // you can uncomment type and use the id of other blockchains,
+      // please visit the truffle documentation for more info
     },
     rinkeby: {
-      // must be a thunk, otherwise truffle commands may hang in CI
       provider: () =>
         new HDWalletProvider(mnemonic, process.env.YOUR_RINKEBY_TEST_URL
           ),
@@ -21,7 +23,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: '0.5.0',
+      version: '0.8.7',
       optimizer: {
         enabled: true,
         runs: 200
