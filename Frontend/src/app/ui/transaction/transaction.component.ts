@@ -14,7 +14,7 @@ import { ContractService } from "src/app/services/contract/contract.service";
 })
 export class TransactionComponent implements OnInit {
   address: string;
-  amount: string;
+  amount: number;
   direction: any;
   transactionForm: FormGroup;
 

@@ -78,8 +78,8 @@ export class ContractService {
         return instance.nuevaTransaccion(
           destinyAccount,
           {
-            from: originAccount,
-            value: window.web3.utils.toWei(amount, 'ether')
+            from: originAccount[0],
+            value: amount
           });
       }).then((status) => {
         if (status) {
