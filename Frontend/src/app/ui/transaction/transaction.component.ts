@@ -14,7 +14,7 @@ import { ContractService } from "src/app/services/contract/contract.service";
 })
 export class TransactionComponent implements OnInit {
   address: string;
-  amount: string;
+  amount: number;
   direction: any;
   transactionForm: FormGroup;
 
@@ -24,7 +24,7 @@ export class TransactionComponent implements OnInit {
         amount: new FormControl("", [Validators.required]),
       });
 
-    
+
     contract
       .connectAccount()
       .then((value: any) => {
@@ -40,11 +40,11 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactionForm.valueChanges.subscribe((x) => {
-      console.log(x);
     });
   }
 
   sendEth(e) {
+    console.log(e);
     this.address = this.transactionForm.value.sendaddress;
     this.amount = this.transactionForm.value.amount;
 
@@ -52,7 +52,7 @@ export class TransactionComponent implements OnInit {
       .trasnferEther(this.direction, this.address, this.amount)
       .then((r) => {
         console.log(r);
-        this.contract.succes();
+        this.contract.success();
       })
       .catch((e) => {
         console.log(e);

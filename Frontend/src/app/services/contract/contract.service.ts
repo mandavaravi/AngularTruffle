@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
+import { WEB3 } from '../../core/web3';
 import contract from 'truffle-contract';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 
+import Web3 from 'web3';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
@@ -16,7 +18,6 @@ declare let window: any;
 })
 
 export class ContractService {
-  private readonly web3Provider: null;
   public accountsObservable = new Subject<string[]>();
   public compatible: boolean;
   web3Modal;
@@ -25,7 +26,7 @@ export class ContractService {
   accounts;
   balance;
 
-  constructor(private snackbar: MatSnackBar) {
+  constructor(@Inject(WEB3) private web3: Web3 ,private snackbar: MatSnackBar) {
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider, // required
@@ -69,33 +70,36 @@ export class ContractService {
 
     return new Promise((resolve, reject) => {
       const paymentContract = contract(tokenAbi);
-      paymentContract.setProvider(that.web3Provider);
-
+      paymentContract.setProvider(this.provider);
       paymentContract.deployed().then((instance) => {
+        let finalAmount =  this.web3.utils.toBN(amount)
+        console.log(finalAmount)
         return instance.nuevaTransaccion(
           destinyAccount,
           {
-            from: originAccount,
-            value: window.web3.utils.toWei(amount, 'ether')
-          });
+            from: originAccount[0],
+            value: this.web3.utils.toWei(finalAmount, 'ether')
+          }
+          );
       }).then((status) => {
         if (status) {
-          return resolve({ status: true });
+          return resolve({status: true});
         }
       }).catch((error) => {
         console.log(error);
 
-        return reject('Error transferring Ether');
+        return reject('Error transfering Ether');
       });
     });
   }
+
 
   failure(message: string) {
     const snackbarRef = this.snackbar.open(message);
     snackbarRef.dismiss()
   }
 
-  succes() {
+  success() {
     const snackbarRef = this.snackbar.open('Transaction complete successfully');
     snackbarRef.dismiss()
   }

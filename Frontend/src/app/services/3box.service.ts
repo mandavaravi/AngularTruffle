@@ -28,12 +28,10 @@ export class ThreeBox {
   }
 
 
-
   public getPublicProfile(address: string, options?: GetProfileOptions): Promise<object> {
     if (!this.web3.utils.isAddress(address)) { throw new Error(`This is not a valid address: ${address}`); }
     return ThreeboxFactory.box.public.get(address, options );
   }
-
 
 
 }
