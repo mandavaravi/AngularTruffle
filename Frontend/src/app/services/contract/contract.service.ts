@@ -16,7 +16,6 @@ declare let window: any;
 })
 
 export class ContractService {
-  private readonly web3Provider: null;
   public accountsObservable = new Subject<string[]>();
   public compatible: boolean;
   web3Modal;
@@ -69,7 +68,11 @@ export class ContractService {
 
     return new Promise((resolve, reject) => {
       const paymentContract = contract(tokenAbi);
-      paymentContract.setProvider(that.web3Provider);
+      console.log(this.provider);
+      console.log(this.web3js);
+      console.log(paymentContract.setProvider(this.provider));
+      console.log(paymentContract.setProvider(this.web3js));
+      paymentContract.setProvider(this.provider);
 
       paymentContract.deployed().then((instance) => {
         return instance.nuevaTransaccion(
@@ -80,22 +83,23 @@ export class ContractService {
           });
       }).then((status) => {
         if (status) {
-          return resolve({ status: true });
+          return resolve({status: true});
         }
       }).catch((error) => {
         console.log(error);
 
-        return reject('Error transferring Ether');
+        return reject('Error transfering Ether');
       });
     });
   }
+
 
   failure(message: string) {
     const snackbarRef = this.snackbar.open(message);
     snackbarRef.dismiss()
   }
 
-  succes() {
+  success() {
     const snackbarRef = this.snackbar.open('Transaction complete successfully');
     snackbarRef.dismiss()
   }

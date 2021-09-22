@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b5d1fd-d02e-49e1-af53-803fa0db2634" name="Default Changelist" comment="" />
+    <list default="true" id="c6b5d1fd-d02e-49e1-af53-803fa0db2634" name="Default Changelist" comment="feat : update contracts and truffle dependencies">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blockchain/build/contracts/Migrations.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockchain/build/contracts/Migrations.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blockchain/build/contracts/Payment.json" beforeDir="false" afterPath="$PROJECT_DIR$/Blockchain/build/contracts/Payment.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/app/services/contract/contract.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/services/contract/contract.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/app/ui/transaction/transaction.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/ui/transaction/transaction.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/app/ui/transaction/transaction.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/ui/transaction/transaction.component.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1owFUP1G8rZt3NxndXv2KhGRT88" />
@@ -156,6 +172,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Frontend/src/app/ui/ui.module.ts</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Blockchain/truffle-config.js</url>
+          <line>1</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
