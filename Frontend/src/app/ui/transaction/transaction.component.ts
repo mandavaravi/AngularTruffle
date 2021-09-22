@@ -40,7 +40,6 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactionForm.valueChanges.subscribe((x) => {
-      console.log(x);
     });
   }
 

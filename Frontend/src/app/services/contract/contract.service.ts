@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
+import { WEB3 } from '../../core/web3';
 import contract from 'truffle-contract';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 
+import Web3 from 'web3';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
@@ -24,7 +26,7 @@ export class ContractService {
   accounts;
   balance;
 
-  constructor(private snackbar: MatSnackBar) {
+  constructor(@Inject(WEB3) private web3: Web3 ,private snackbar: MatSnackBar) {
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider, // required
@@ -68,19 +70,17 @@ export class ContractService {
 
     return new Promise((resolve, reject) => {
       const paymentContract = contract(tokenAbi);
-      console.log(this.provider);
-      console.log(this.web3js);
-      console.log(paymentContract.setProvider(this.provider));
-      console.log(paymentContract.setProvider(this.web3js));
       paymentContract.setProvider(this.provider);
-
       paymentContract.deployed().then((instance) => {
+        let finalAmount =  this.web3.utils.toBN(amount)
+        console.log(finalAmount)
         return instance.nuevaTransaccion(
           destinyAccount,
           {
             from: originAccount[0],
-            value: amount
-          });
+            value: this.web3.utils.toWei(finalAmount, 'ether')
+          }
+          );
       }).then((status) => {
         if (status) {
           return resolve({status: true});
