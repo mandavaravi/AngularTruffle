@@ -1,6 +1,7 @@
 <div class="body">
 
     <mat-card class="account">
+      <h3> Make a transaction </h3>
         <form [formGroup]="transactionForm" (ngSubmit)="sendEth($event)">
             <mat-form-field appearance="outline">
                 <mat-label>Destination Account</mat-label>

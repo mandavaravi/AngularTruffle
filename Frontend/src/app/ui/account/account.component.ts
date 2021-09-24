@@ -25,13 +25,14 @@ export class AccountComponent {
     this.contract
       .connectAccount()
       .then((value: any) => {
-        this.direction = value;
+        this.direction = value[0];
         this.getDetails(this.direction);
-       /* this.profile = this.threebox.getProfile(this.direction).then((response) => {
+        console.log(this.direction);
+        this.profile = this.threebox.getProfile(this.direction).then((response) => {
             console.log(response);
             this.profile = response;
             this.url = this.profile.image[0].contentUrl["/"];
-          }); */
+          });
         this.getImage(this.direction);
       })
       .catch((error: any) => {
@@ -61,7 +62,6 @@ export class AccountComponent {
     this.contract
       .connectAccount()
       .then((value: any) => {
-        console.log(value);
         this.direction = value;
         this.getDetails(this.direction);
       })
