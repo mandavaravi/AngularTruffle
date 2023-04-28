@@ -59,7 +59,7 @@ export class ContractService {
   }
 
   async accountInfo(accounts){
-    const initialvalue = await this.web3js.eth.getBalance(accounts[0]);
+    const initialvalue = await this.web3js.eth.getBalance(accounts);
     this.balance = this.web3js.utils.fromWei(initialvalue , 'ether');
     return this.balance;
   }
@@ -102,5 +102,34 @@ export class ContractService {
   success() {
     const snackbarRef = this.snackbar.open('Transaction complete successfully');
     snackbarRef.dismiss()
+  }
+
+  public async getItems(originAccount) {
+    // const that = this;
+    // return new Promise((resolve, reject) => {
+      const paymentContract = contract(tokenAbi);
+      paymentContract.setProvider(this.provider);
+      let payment = await paymentContract.new({ from: originAccount[0] });
+      let balance = await payment.getAll({ from: originAccount[0] });
+      console.log('balance :: ' + balance);
+      return balance;
+  
+      //   paymentContract.methods['getAll()'].call()
+    //   .then(receipt => {
+    //     console.log(receipt);
+    //   }).catch(err => {
+    //   console.error(err);
+    // });
+    //   paymentContract.deployed().then((instance) => {
+    //     return instance.getAll();
+    //   }).then((status) => {
+    //     if (status) {
+    //       return resolve({status: true});
+    //     }
+    //   }).catch((error) => {
+    //     console.log(error);
+    //     return reject('Error getting');
+    //   });
+    // });
   }
 }

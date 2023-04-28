@@ -1,11 +1,12 @@
-pragma solidity 0.8.7;
+//SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.4;
 
 contract Payment {
     address origenTransferencia;
     address payable destinoTransferencia;
     uint montoTransferencia;
     
-    constructor() public {
+    constructor() {
         origenTransferencia = msg.sender;
     }
 
@@ -17,7 +18,13 @@ contract Payment {
         emit TransferirMonto(destinoTransferencia, origenTransferencia, msg.value);
         return true;
     }
-    function verBalanceCuenta() public payable returns (uint) {
-        return origenTransferencia.balance;
+    function verBalanceCuenta() public pure returns (uint ) {
+        return 1000;
     }
+
+    function getAll() public pure returns (uint) {
+        return 1000;
+    }
+
+    
 }
