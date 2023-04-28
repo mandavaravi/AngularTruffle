@@ -46,17 +46,43 @@ export class TransactionComponent implements OnInit {
   sendEth(e) {
     console.log(e);
     this.address = this.transactionForm.value.sendaddress;
+    alert(this.address);
     this.amount = this.transactionForm.value.amount;
+    alert(this.amount);
+    alert(this.direction);
 
     this.contract
       .trasnferEther(this.direction, this.address, this.amount)
       .then((r) => {
         console.log(r);
-        this.contract.success();
+        alert('Tr comp 1');
+        this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
+        alert('Tr comp 2 : ' + 2);
         this.contract.failure("Transaction failed");
+      });
+  }
+
+  getItems() {
+    // this.address = this.transactionForm.value.sendaddress;
+    // alert(this.address);
+    // this.amount = this.transactionForm.value.amount;
+    // alert(this.amount);
+    // alert(this.direction);
+
+    this.contract
+      .getItems(this.direction)
+      .then((r) => {
+        console.log(r);
+        alert('Tr comp 1 getting');
+        // this.contract.success();  
+      })
+      .catch((e) => {
+        console.log(e);
+        alert('Tr comp 2 : ' + e);
+        this.contract.failure("Getting failed");
       });
   }
 }
