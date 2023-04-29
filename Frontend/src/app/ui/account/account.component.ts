@@ -28,11 +28,12 @@ export class AccountComponent {
         this.direction = value[0];
         this.getDetails(this.direction);
         console.log(this.direction);
-        this.profile = this.threebox.getProfile(this.direction).then((response) => {
-            console.log(response);
-            this.profile = response;
-            this.url = this.profile.image[0].contentUrl["/"];
-          });
+        // this.profile = this.threebox.getProfile(this.direction).then((response) => {
+        //     console.log(response);
+        //     this.profile = response;
+        //     this.url = this.profile.image[0].contentUrl["/"];
+        //     alert("img url in acc :: "+this.url);
+        //   });
         this.getImage(this.direction);
       })
       .catch((error: any) => {
@@ -46,7 +47,7 @@ export class AccountComponent {
     this.data = this.sanitizer.bypassSecurityTrustResourceUrl(
       "data:image/svg+xml; utf8," +
       encodeURI(
-        new Identicon(Md5.hashStr(account), {
+        new Identicon(Md5.hashStr(account + "Instacart"), {
           size: 32,
           format: "svg",
         }).toString(true)
