@@ -138,7 +138,7 @@ export class TransactionComponent implements OnInit {
 
   getUserById() {
     this.contract
-      .getUserById(this.direction, this.direction)
+      .getUserById(this.direction, this.direction[0])
       .then((r) => {
         console.log(r);
         alert('Tr comp 1 getting');

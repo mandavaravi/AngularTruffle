@@ -134,85 +134,85 @@ export class ContractService {
   }
 
 
-  
+
   public async getItemById(originAccount, itemId) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.getItemById(itemId, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.getItemById(itemId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
 
   public async getAllItems(originAccount) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.getAllItems({ from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.getAllItems({ from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async addUser(originAccount, name, addr, userId) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.addUser(userId, name, addr, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.addUser(userId, name, addr, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async getAllUsers(originAccount) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.getAllUsers({ from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.getAllUsers({ from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async getUserById(originAccount, userId) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.getUserById(userId, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.getUserById(userId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async addItemToCart(originAccount, userId, itemId, name, catId, price, quantity, sellerId) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.addItemToCart(userId, itemId, name, catId, price, quantity, sellerId, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.addItemToCart(userId, itemId, name, catId, price, quantity, sellerId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async viewCart(originAccount, userId) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.viewCart(userId, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.viewCart(userId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async updateCart(originAccount, userId, itemId, newQuant) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.updateCart(userId, itemId, newQuant, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.updateCart(userId, itemId, newQuant, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   public async removeItemFromCart(originAccount, userId, itemId) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.removeItemFromCart(userId, itemId, { from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.removeItemFromCart(userId, itemId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
