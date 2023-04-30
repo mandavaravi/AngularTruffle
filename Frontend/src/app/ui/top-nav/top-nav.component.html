@@ -17,6 +17,40 @@
         Transactions
       </mat-list-item>
 
+      <!--  -->
+      <mat-list-item [routerLink]="['/item-list']">
+        <!-- <mat-icon>home</mat-icon> --> 
+        Items List
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/buyer-signup']">
+        <!-- <mat-icon>money</mat-icon> -->
+        buyer-signup
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/seller-signup']">
+        <!-- <mat-icon>home</mat-icon> -->
+        seller-signup
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/cart-list']">
+        <!-- <mat-icon>money</mat-icon> -->
+        cart-list
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/bill-list']">
+        <!-- <mat-icon>home</mat-icon> -->
+        bill-list
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/seller-items']">
+        <!-- <mat-icon>money</mat-icon> -->
+        seller-items
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/seller-add-item']">
+        <!-- <mat-icon>money</mat-icon> -->
+        seller-add-item
+      </mat-list-item>
+      <!--  -->
+
     </mat-nav-list>
   </mat-sidenav>
  <mat-sidenav-content>
@@ -34,6 +68,27 @@
       <button mat-icon-button [routerLink]="['/account']">
         <mat-icon>person</mat-icon>
       </button>
+      <!-- <button mat-icon-button [routerLink]="['/item-list']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/buyer-signup']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/seller-signup']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/cart-list']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/bill-list']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/seller-items']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/seller-add-item']">
+        <mat-icon>person</mat-icon>
+      </button> -->
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

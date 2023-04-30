@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 // Components
@@ -27,6 +28,7 @@ import { BillListComponent } from './bill/bill-list/bill-list.component';
 import { BillViewComponent } from './bill/bill-view/bill-view.component';
 import { BuyerSignupComponent } from './user/buyer-signup/buyer-signup.component';
 import { SellerSignupComponent } from './user/seller-signup/seller-signup.component'
+import { EmartService } from '../services/instacart/emart.service';
 
 @NgModule({
   declarations: [
@@ -49,14 +51,18 @@ import { SellerSignupComponent } from './user/seller-signup/seller-signup.compon
     CommonModule,
     RouterModule.forChild(UiRoute),
     AppMaterialModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     TopNavComponent,
-    HomeComponent
+    HomeComponent,
+    
   ],
   providers: [
     ContractService,
+    EmartService,
     ThreeBox
   ],
 })

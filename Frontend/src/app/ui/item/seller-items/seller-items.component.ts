@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmartService } from 'src/app/services/instacart/emart.service';
 
 @Component({
   selector: 'app-seller-items',
@@ -6,10 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seller-items.component.scss']
 })
 export class SellerItemsComponent implements OnInit {
-
-  constructor() { }
+  allItems: any;
+  constructor(protected emartService: EmartService, protected router: Router) { }
 
   ngOnInit(): void {
+
+    // if(JSON.parse(localStorage.getItem("currentSeller")).sellerId != 0){
+      this.emartService.getAllSelleritems(JSON.parse(localStorage.getItem("currentSeller")).sellerId).subscribe((response)=> 
+        {
+          this.allItems = response;
+        }
+      );
+    // }
+    // else{
+    //   this.router.navigate(['/']);
+    // }
+
   }
 
+  addItem(){
+    this.router.navigate(['/seller-add-item']);
+  }
+
+  viewItem(itemId: number){
+
+  }
+
+  editItem(itemId: number){
+
+  }
 }

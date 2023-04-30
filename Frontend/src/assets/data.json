@@ -1,0 +1,123 @@
+{
+    "itemsList": [
+        {
+            "itemId": 0,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "pricePerQuantity": 1000,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 1,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 2,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 3,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 4,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 5,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 6,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 7,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 8,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 9,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "sellerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        }
+    ],
+    "retailersList": [
+        {
+            "retId": 0
+        }
+    ],
+    "userList": [
+        {
+            "userId": 0
+        }
+    ],
+    "allUsersCarts": [
+        {
+            "userId": 0,
+            "cart": []
+        }
+    ],
+    "allUsersOrders": [
+        {
+            "userId": 0,
+            "orders": []
+        }
+    ],
+    "allretailersInvs": [
+        {
+            "retId": 0,
+            "inv": []
+        }
+    ]
+}

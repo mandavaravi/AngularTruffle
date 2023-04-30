@@ -1,1 +1,252 @@
-<p>seller-signup works!</p>
+<div class="container">
+    <div class="row m-5">
+		<div class="col">
+			<div class="card card-width ">
+				<div class="card-header font-weight-bold">
+					<h3 style="color: #4a4a4a;">Registration</h3>
+				</div>
+                <div class="card-body">
+                    <form action="" #registerForm = 'ngForm'>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Name' style="color: #4a4a4a;">Name:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regName.errors?.required && regName.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter name
+									 </div> 
+									<input 
+										type='text' 
+										id='Name' 
+										class="form-control"
+										name="Name" 
+										#regName= "ngModel"  
+										[(ngModel)]='rName' 
+										placeholder="Name goes here..."
+										required/>
+								</div> 
+							</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Password' style="color: #4a4a4a;">Password:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regPassword.errors?.required && regPassword.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Password
+									 </div> 
+									<input 
+										type='password' 
+										id='Password' 
+										class="form-control"
+										name="Password" 
+										#regPassword= "ngModel"  
+										[(ngModel)]='rPassword' 
+										placeholder="Set your Password "
+										required/>
+								</div> 
+							</div>
+						</div>
+
+						<div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='rePassword' style="color: #4a4a4a;">Re-Enter Password:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regrePassword.errors?.required && regrePassword.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Re-Enter Password
+									 </div> 
+									 <div class="small text-danger font-weight-light " *ngIf="checkpass"
+									 style="display: inline-block; margin-left: 15px;">
+										Please check the Password again!
+									 </div> 
+									<input 
+										type='password' 
+										id='rePassword' 
+										class="form-control"
+										name="rePassword" 
+										#regrePassword= "ngModel"  
+										[(ngModel)]='rrePassword'
+										placeholder="Re-Type the password" 
+										required/>
+								</div> 
+							</div>
+						</div>
+                              
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Company' style="color: #4a4a4a;">Company:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regCompany.errors?.required && regCompany.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Company
+									 </div> 
+									<input 
+										type='text' 
+										id='Company' 
+										class="form-control"
+										name="Company" 
+										#regCompany= "ngModel"  
+										[(ngModel)]='rCompany' 
+										placeholder="Company Name goes here..."
+										required/>
+								</div> 
+							</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Brief' style="color: #4a4a4a;">Brief:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regBrief.errors?.required && regBrief.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Brief
+									 </div> 
+									<input 
+										type='text' 
+										id='Brief' 
+										class="form-control"
+										name="Brief" 
+										#regBrief= "ngModel"  
+										[(ngModel)]='rBrief'
+										placeholder="Brief about the item..." 
+										required/>
+								</div> 
+							</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Gst' style="color: #4a4a4a;">Gst:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regGst.errors?.required && regGst.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Gst
+									 </div> 
+									<input 
+										type='number' 
+										id='Gst' 
+										class="form-control"
+										name="Gst" 
+										#regGst= "ngModel"  
+										[(ngModel)]='rGst' 
+										placeholder=" GST %"
+										required/>
+								</div> 
+							</div>
+                        </div>
+                        
+                        <div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Address' style="color: #4a4a4a;">Address:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regAddress.errors?.required &&  regAddress.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Address
+									 </div>  
+                                    <input 
+										type='textarea'
+										class="form-control " 
+										id='Address' 
+										name="Address" 
+										#regAddress = "ngModel"
+										[(ngModel)]='rAddress'
+										placeholder="Provide your Address"
+										required/>
+								</div>
+								 
+                            </div>
+                        </div>
+                        
+
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Email' style="color: #4a4a4a;">Email:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regEmail.errors?.required &&  regEmail.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Email
+									 </div>  
+                                    <input 
+										type='email'
+										class="form-control " 
+										id='Email' 
+										name="Email" 
+										#regEmail = "ngModel"
+										[(ngModel)]='rEmail'
+										placeholder="Email-Id goes here..."
+										required/>
+								</div>
+								 
+                            </div>
+                        </div>
+
+                        <div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Website' style="color: #4a4a4a;">Website:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regWebsite.errors?.required &&  regWebsite.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Website
+									 </div>  
+                                    <input 
+										type='textarea'
+										class="form-control " 
+										id='Website' 
+										name="Website" 
+										#regWebsite = "ngModel"
+										[(ngModel)]='rWebsite'
+										placeholder="Mention your site"
+										required/>
+								</div>
+								 
+                            </div>
+                        </div>
+
+                        <div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Contact' style="color: #4a4a4a;">Contact:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regContact.errors?.required &&  regContact.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Contact
+									 </div>  
+                                    <input 
+										type='number'
+										class="form-control " 
+										id='Contact' 
+										name="Contact" 
+										
+										#regContact = "ngModel"
+										[(ngModel)]='rContact'
+										placeholder="Give contact number"
+										required/>
+								</div>
+								 
+                            </div>
+                        </div>
+                         
+                        
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" 
+										class="btn btn-success"
+										(click)='addSeller()'
+										[disabled] = '!registerForm.valid'
+										>Register
+								</button>
+                            </div>
+							<div class="col">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
