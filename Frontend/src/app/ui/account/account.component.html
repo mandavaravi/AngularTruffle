@@ -4,9 +4,9 @@
       <section class="header">
 
         <img *ngIf="!url" [src]="data" class="profile" />
-        <img  *ngIf="url"src='https://ipfs.infura.io/ipfs/{{ url }}'class="profileInfura" />
-       <h4 *ngIf="profile"> Welcome {{ profile.name }}   </h4>
-       <h6 *ngIf="profile">{{ profile.emoji }}</h6>
+        <img  *ngIf="url" src='https://ipfs.infura.io/ipfs/{{ url }}'class="profileInfura" />
+       <h4> Welcome name   </h4>
+       <h6> emoji </h6>
 
         <h4>Your address is:</h4>
         <h6>{{ direction }} </h6>
