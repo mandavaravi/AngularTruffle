@@ -10,12 +10,8 @@ import { EmartService } from 'src/app/services/instacart/emart.service';
 export class BuyerSignupComponent implements OnInit {
 
   rName = '';
-  rPassword = '';
-  rrePassword= '';
-  rMobile : number= null;
-  rEmail = '';
-  rDate = new Date();
-  checkpass : boolean =false;
+  rUserId = '';
+  rAddress = '';
 
 
 
@@ -26,24 +22,19 @@ export class BuyerSignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkPassword(){ 
-    if(this.rPassword == this.rrePassword){
-      return true;
-    }
-    return false;
-  }
+  // checkPassword(){ 
+  //   if(this.rPassword == this.rrePassword){
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   addBuyer(){
 
-    if(this.checkPassword()){
       let buyer: any = {
-        "buyerId" : 0,
-        "buyerUsername" : this.rName,
-        "buyerPassword" : this.rPassword,
-        "buyerEmail" : this.rEmail,
-        "buyerMobile" : this.rMobile,
-        "buyerDate" : this.rDate,
-        "allBills": null
+        "userId" : 0,
+        "userName" : this.rName,
+        "homeAddress" : this.rAddress,
       }
 
       this.emartService.addBuyer(buyer).subscribe((response)=> 
@@ -52,13 +43,6 @@ export class BuyerSignupComponent implements OnInit {
           this.router.navigate(['/']);
         }
       );
-
-    }
-    else{
-      this.checkpass = true;
-      document.getElementById("rePassword").focus();
-    }
-
   }
 
 }

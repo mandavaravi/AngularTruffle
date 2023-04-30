@@ -7,6 +7,28 @@
 				</div>
                 <div class="card-body">
                     <form action="" #registerForm = 'ngForm'>
+
+						<div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='UserId' style="color: #4a4a4a;">User Id:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regUserId.errors?.required && regUserId.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter UserId
+									 </div> 
+									<input 
+										type='text' 
+										id='UserId' 
+										class="form-control"
+										name="UserId" 
+										#regUserId = "ngModel"  
+										[(ngModel)]='rUserId' 
+										placeholder="UserId goes here..."
+										required/>
+								</div> 
+							</div>
+						</div>
+
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -27,7 +49,7 @@
 								</div> 
 							</div>
 						</div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col">
                                 <div class="form-group">
 									<label for='Password' style="color: #4a4a4a;">Password:</label>
@@ -70,31 +92,31 @@
 										required/>
 								</div> 
 							</div>
-						</div>
+						</div> -->
 
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
-									<label for='Email' style="color: #4a4a4a;">Email:</label>
-									<div class="small text-danger  font-weight-light"  *ngIf="regEmail.errors?.required &&  regEmail.touched"
+									<label for='Address' style="color: #4a4a4a;">Address:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regAddress.errors?.required &&  regAddress.touched"
 									style="display: inline-block; margin-left: 15px;">
-										Please Enter Email
+										Please Enter Address
 									 </div>  
                                     <input 
-										type='email'
+										type='text'
 										class="form-control " 
-										id='Email' 
-										name="Email" 
-										#regEmail = "ngModel"
-										[(ngModel)]='rEmail'
-										placeholder="Email-Id goes here..."
+										id='Address' 
+										name="Address" 
+										#regAddress = "ngModel"
+										[(ngModel)]='rAddress'
+										placeholder="Address goes here..."
 										required/>
 								</div>
 								 
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!-- <div class="row">
 							<div class="col">
 								<div class="form-group">
 									<label for='Mobile' style="color: #4a4a4a;">Mobile:</label>
@@ -114,7 +136,7 @@
 								</div>
 								 
                             </div>
-                        </div>
+                        </div> -->
 
 
                                  

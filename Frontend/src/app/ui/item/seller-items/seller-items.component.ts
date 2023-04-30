@@ -13,8 +13,8 @@ export class SellerItemsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // if(JSON.parse(localStorage.getItem("currentSeller")).sellerId != 0){
-      this.emartService.getAllSelleritems(JSON.parse(localStorage.getItem("currentSeller")).sellerId).subscribe((response)=> 
+    // if(JSON.parse(localStorage.getItem("currentSeller")).retailerId != 0){
+      this.emartService.getAllSelleritems(JSON.parse(localStorage.getItem("currentSeller")).retailerId).subscribe((response)=> 
         {
           this.allItems = response;
         }

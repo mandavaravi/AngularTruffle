@@ -181,11 +181,11 @@ export class ContractService {
     return balance;
   }
 
-  public async addItemToCart(originAccount, userId, itemId, name, catId, price, quantity, sellerId) {
+  public async addItemToCart(originAccount, userId, itemId, name, catId, price, quantity, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
     // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.addItemToCart(userId, itemId, name, catId, price, quantity, sellerId, { from: originAccount[0] });
+    let balance = await this.payment.addItemToCart(userId, itemId, name, catId, price, quantity, retailerId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -244,29 +244,29 @@ export class ContractService {
     return balance;
   }
 
-  public async addnewItemToInvt(originAccount, name, catId, price, quantity, sellerId, itemId) {
+  public async addnewItemToInvt(originAccount, name, catId, price, quantity, retailerId, itemId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
     // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.addnewItemToInvt(name, catId, price, quantity, sellerId[0], itemId, { from: originAccount[0] });
+    let balance = await this.payment.addnewItemToInvt(name, catId, price, quantity, retailerId[0], itemId, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
-  public async viewInventory(originAccount, sellerId) {
+  public async viewInventory(originAccount, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
     // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.viewInventory(sellerId[0], { from: originAccount[0] });
+    let balance = await this.payment.viewInventory(retailerId[0], { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
 
-  public async UpdateInventory(originAccount, itemId, newQuant, sellerId) {
+  public async UpdateInventory(originAccount, itemId, newQuant, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
     // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.UpdateInventory(itemId, newQuant, sellerId[0], { from: originAccount[0] });
+    let balance = await this.payment.UpdateInventory(itemId, newQuant, retailerId[0], { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }

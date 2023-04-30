@@ -18,29 +18,12 @@ export class ItemDisplayComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    // if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
-
     this.activatedRoute.paramMap.subscribe(
       (param) => {
         let id = param.get('iId');
         this.item = this.emartService.getItem(id);
-        // .subscribe((response) => {
-        //   this.item = response;
-        // }
-        // );
       }
     );
-    // }
-    // else{
-    //   this.router.navigate(['/']);
-    // }
-
-
-
-
-
-
 
   }
 

@@ -10,42 +10,36 @@ import { EmartService } from 'src/app/services/instacart/emart.service';
 export class SellerSignupComponent implements OnInit {
 
   rName = '';
-  rPassword = '';
-  rrePassword = '';
-  rCompany = '';
-  rBrief = '';
-  rGst: number = null;
+  rretailerId = '';
+  // rPassword = '';
+  // rrePassword = '';
+  // rCompany = '';
+  // rBrief = '';
+  // rGst: number = null;
   rAddress = '';
-  rEmail = '';
-  rWebsite = '';
-  rContact: number = null;
-  checkpass : boolean =false;
+  // rEmail = '';
+  // rWebsite = '';
+  // rContact: number = null;
+  // checkpass : boolean =false;
 
   constructor(protected emartService: EmartService, protected router: Router) { }
 
   ngOnInit(): void {
   }
-  checkPassword(){ 
-    if(this.rPassword == this.rrePassword){
-      return true;
-    }
-    return false;
-  }
+  // checkPassword(){ 
+  //   if(this.rPassword == this.rrePassword){
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
 
   addSeller(){
-    if(this.checkPassword()){
+    // if(this.checkPassword()){
     let seller: any = {
-      "sellerId" : 0,
-      "sellerUsername" : this.rName,
-      "sellerPassword" : this.rPassword,
-      "sellerCompany" : this.rCompany,
-      "sellerBrief" : this.rBrief,
-      "sellerGst" : this.rGst,
-      "sellerAddress" : this.rAddress,
-      "sellerEmail" : this.rEmail,
-      "sellerWebsite" : this.rWebsite,
-      "sellerContact" : this.rContact
+      "retailerId" : 0,
+      "retailerName" : this.rName,
+      "homeAddress" : this.rAddress
     }
 
     this.emartService.addSeller(seller).subscribe((response)=> 
@@ -54,11 +48,11 @@ export class SellerSignupComponent implements OnInit {
         this.router.navigate(['/']);
       }
     );
-    }
-    else{
-      this.checkpass = true;
-      document.getElementById("rePassword").focus();
-    }
+    // }
+    // else{
+    //   this.checkpass = true;
+    //   document.getElementById("rePassword").focus();
+    // }
   }
 
 }

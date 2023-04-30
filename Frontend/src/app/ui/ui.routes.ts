@@ -25,7 +25,7 @@ export const UiRoute: Routes = [
     component: ItemDisplayComponent
   },
   {
-    path: 'item-list',
+    path: 'item-list/:iId',
     component: ItemListComponent
   },
   {

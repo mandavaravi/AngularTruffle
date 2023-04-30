@@ -25,7 +25,7 @@ export class SellerAddItemComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // if(JSON.parse(localStorage.getItem("currentSeller")).sellerId != 0){
+    // if(JSON.parse(localStorage.getItem("currentSeller")).retailerId != 0){
       this.emartService.getAllCategories().subscribe
       (
         (res) => {
@@ -55,7 +55,7 @@ export class SellerAddItemComponent implements OnInit {
       itemRemarks : this.rRemarks,
       itemStock : this.rStock,
       subCategory : subcat,
-      seller : {sellerId : JSON.parse(localStorage.getItem("currentSeller")).sellerId}
+      seller : {retailerId : JSON.parse(localStorage.getItem("currentSeller")).retailerId}
     };
     
     return this.emartService.addItem(item).subscribe

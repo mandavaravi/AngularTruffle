@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { Item } from '../../item';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmartService } from 'src/app/services/instacart/emart.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class ItemListComponent implements OnInit {
   toPrice:number;
   fromPrice:number;
   searchBar: string;
-  constructor(protected emartService: EmartService, protected router:Router) 
+  constructor(protected emartService: EmartService, protected router:Router, protected activatedRoute: ActivatedRoute) 
   {
     this.filteredItems=[];
     this.fromPrice = 0;
@@ -31,14 +31,27 @@ export class ItemListComponent implements OnInit {
   ngOnInit(): void {
     // if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
       alert("item list ngOn");
-      this.emartService.getAllItems().subscribe((response: any) => {
-        // this.allItems =  response.itemsList; 
-        const itemsList = response.itemsList;
-        console.log('type : ' + typeof (itemsList));
-        this.allItems = Array.from(itemsList); 
-        console.log('type : ' + typeof (this.allItems[0]));
-        this.emartService.setLocalItems(this.allItems);
-      });
+      this.activatedRoute.paramMap.subscribe(
+        (param) => {
+          let id = param.get('iId');
+          this.allItems = this.emartService.getAllSelleritems(id).subscribe((response: any) => {
+            const itemsList = response['allretailersInvs'][id]; 
+            console.log('type : ' + typeof (itemsList));
+            this.allItems = Array.from(itemsList); 
+            console.log('type : ' + (this.allItems[0]));
+            // this.emartService.setLocalItems(this.allItems); 
+          });
+        }
+      );
+
+      // this.emartService.getAllItems().subscribe((response: any) => {
+      //   // this.allItems =  response.itemsList; 
+      //   const itemsList = response.itemsList;
+      //   console.log('type : ' + typeof (itemsList));
+      //   this.allItems = Array.from(itemsList); 
+      //   console.log('type : ' + typeof (this.allItems[0]));
+      //   this.emartService.setLocalItems(this.allItems);
+      // });
   
       alert("item list ngOn");
     // }

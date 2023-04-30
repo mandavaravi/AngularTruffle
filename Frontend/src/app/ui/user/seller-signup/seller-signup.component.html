@@ -5,7 +5,7 @@
 				<div class="card-header font-weight-bold">
 					<h3 style="color: #4a4a4a;">Registration</h3>
 				</div>
-                <div class="card-body">
+                <!-- <div class="card-body">
                     <form action="" #registerForm = 'ngForm'>
                         
                         <div class="row">
@@ -243,6 +243,89 @@
                             </div>
                         </div>
 
+                    </form>
+				</div> -->
+				<div class="card-body">
+                    <form action="" #registerForm = 'ngForm'>
+
+						<div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='retailerId' style="color: #4a4a4a;">Seller Id:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regretailerId.errors?.required && regretailerId.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter retailerId
+									 </div> 
+									<input 
+										type='text' 
+										id='retailerId' 
+										class="form-control"
+										name="retailerId" 
+										#regretailerId = "ngModel"  
+										[(ngModel)]='rretailerId' 
+										placeholder="retailerId goes here..."
+										required/>
+								</div> 
+							</div>
+						</div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Name' style="color: #4a4a4a;">Name:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regName.errors?.required && regName.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter name
+									 </div> 
+									<input 
+										type='text' 
+										id='Name' 
+										class="form-control"
+										name="Name" 
+										#regName= "ngModel"  
+										[(ngModel)]='rName' 
+										placeholder="Name goes here..."
+										required/>
+								</div> 
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Address' style="color: #4a4a4a;">Address:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regAddress.errors?.required &&  regAddress.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Address
+									 </div>  
+                                    <input 
+										type='text'
+										class="form-control " 
+										id='Address' 
+										name="Address" 
+										#regAddress = "ngModel"
+										[(ngModel)]='rAddress'
+										placeholder="Address goes here..."
+										required/>
+								</div>
+								 
+                            </div>
+                        </div>
+
+                                 
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" 
+										class="btn btn-success"
+										(click)='addSeller()'
+										[disabled] = '!registerForm.valid'
+										>Register
+								</button>
+                            </div>
+							<div class="col">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
                     </form>
 				</div>
 			</div>

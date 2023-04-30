@@ -153,7 +153,7 @@ export class TransactionComponent implements OnInit {
   
   public tempItCart = 0;
   addItemToCart() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .addItemToCart(this.direction,  this.direction, 201 + this.tempItIn, "item name " + this.tempItIn, 101, 10, 30, this.direction)
       .then((r) => {
@@ -171,7 +171,7 @@ export class TransactionComponent implements OnInit {
 
   
   viewCart() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .viewCart(this.direction, this.direction)
       .then((r) => {
@@ -187,7 +187,7 @@ export class TransactionComponent implements OnInit {
   }
 
   updateCart() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .updateCart(this.direction, this.direction, 201, 50)
       .then((r) => {
@@ -203,7 +203,7 @@ export class TransactionComponent implements OnInit {
   }
 
   removeItemFromCart() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .removeItemFromCart(this.direction, this.direction, 201)
       .then((r) => {
@@ -285,7 +285,7 @@ export class TransactionComponent implements OnInit {
 
   public tempItIn = 0;
   addnewItemToInvt() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .addnewItemToInvt(this.direction, "item name " + this.tempItIn, 101, 10, 100, this.direction, 201 + this.tempItIn)
       .then((r) => {
@@ -302,7 +302,7 @@ export class TransactionComponent implements OnInit {
   }
 
   viewInventory() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .viewInventory(this.direction, this.direction)
       .then((r) => {
@@ -318,7 +318,7 @@ export class TransactionComponent implements OnInit {
   }
 
   UpdateInventory() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .UpdateInventory(this.direction, 201, 150, this.direction)
       .then((r) => {
@@ -334,7 +334,7 @@ export class TransactionComponent implements OnInit {
   }
 
   removeItemInventory() {
-    // this.dir, name, catId, price, quantity, sellerId, itemId
+    // this.dir, name, catId, price, quantity, retailerId, itemId
     this.contract
       .removeItemInventory(this.direction, this.direction, 201)
       .then((r) => {

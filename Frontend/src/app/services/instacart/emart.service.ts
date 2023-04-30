@@ -23,8 +23,12 @@ export class EmartService {
   * ******************************************************************************************* ******************************************************************************************
   */
 
-  getAllSelleritems(sellerId: number){
-    return this.http.get('http://localhost:8083/ItemService/itemservice/selleritems/all/'+sellerId);
+  getAllSellers(){
+    return this.http.get('/assets/data.json');
+  }
+
+  getAllSelleritems(retailerId){
+    return this.http.get('/assets/data.json');
   }
 
   addItem(item : any){

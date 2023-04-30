@@ -382,7 +382,6 @@ contract Payment {
     }
 
     function placeOrder(address userId) public payable {
-        // ❌ Check that totalSupply is less than MAX_SUPPLY
         //require(totalSupply() < MAX_SUPPLY, "Can't mint anymore tokens.");
 
         //check if payment is more than min amount
