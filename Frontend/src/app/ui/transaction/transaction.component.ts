@@ -60,7 +60,7 @@ export class TransactionComponent implements OnInit {
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + 2);
+        alert('Tr comp 2 : ' + e);
         this.contract.failure("Transaction failed");
       });
   }

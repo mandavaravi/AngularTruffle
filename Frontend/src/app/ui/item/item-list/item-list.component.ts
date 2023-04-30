@@ -35,7 +35,7 @@ export class ItemListComponent implements OnInit {
         (param) => {
           let id = param.get('iId');
           this.allItems = this.emartService.getAllSelleritems(id).subscribe((response: any) => {
-            const itemsList = response['allretailersInvs'][id]; 
+            const itemsList = response; //['allretailersInvs'][id]; 
             console.log('type : ' + typeof (itemsList));
             this.allItems = Array.from(itemsList); 
             console.log('type : ' + (this.allItems[0]));

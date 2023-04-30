@@ -69,12 +69,12 @@ export class ContractService {
     this.accounts = await this.web3js.eth.getAccounts();
     this.initContractInstance(this.accounts).then((r) => {
       this.payment = r;
-      console.log('conAcc from ser suc ::  '+ this.payment);
+      console.log('conAcc from ser suc ::  ' + this.payment);
     })
-    .catch((e) => {
-      console.log('conAcc from ser err:: ' +e);
-      this.failure("Getting failed");
-    });
+      .catch((e) => {
+        console.log('conAcc from ser err:: ' + e);
+        this.failure("Getting failed");
+      });
     return this.accounts;
   }
 
@@ -289,4 +289,16 @@ export class ContractService {
     return balance;
   }
 
+
+
+
+  // can use this for placeOrder methods
+  async placeOrder(originAccount, destinyAccount, orderId, orderAmount) {
+    let balance = await this.payment.placeOrderNew(destinyAccount, orderId, orderAmount, { from: originAccount[0] });
+    console.log('balance :: ' + balance);
+    return balance;
+  }
+
+
 }
+

@@ -108,54 +108,31 @@
 											  #device 
 											  id="Category" 
 											  class="form-control" 
-											  (change)="GetSubCategory(device.value)" 
 											  >
-										<option *ngFor="let cat of clist" value="{{cat.categoryId}}" >{{ cat.categoryId || cat.categoryName}}</option>   
+										<option *ngFor="let cat of clist" value="{{cat.categoryId}}" >{{  cat.categoryName}}</option>   
 								   </select>
-                                    <!-- <input 
-										type='textarea'
-										class="form-control " 
-										id='Category' 
-										name="Category" 
-										#regCategory = "ngModel"
-										[(ngModel)]='rCategory'
-										required/> -->
 								</div>
 								 
                             </div>
 
-
-
-							<!-- <div class="col">
-								<div class="form-group">
-									<label for='SubCategory'>SubCategory Id:</label>
-									<div class="small text-danger  font-weight-light"  *ngIf="regSubCategory.errors?.required &&  regSubCategory.touched">
-										Please Enter SubCategory
-									 </div>
-									 <select [(ngModel)]="rSubCategory" name="subCategory" #regSubCategory ="ngModel" id="SubCategory" class="form-control">
-										<option *ngFor="let scat of sclist" value="{{scat.subCategoryId}}">{{ scat.subCategoryId || scat.subCategoryName}}</option>   
-								 	 </select>  
-								</div>
-								 
-                            </div> -->
                         </div>
                         
 
 						<div class="row">
 							<div class="col">
 								<div class="form-group">
-									<label for='Remarks' style="color: #4a4a4a;">Seller Id:</label>
-									<div class="small text-danger  font-weight-light"  *ngIf="regRemarks.errors?.required &&  regRemarks.touched"
+									<label for='Retailer' style="color: #4a4a4a;">Retailer Id:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regRetailer.errors?.required &&  regRetailer.touched"
 									style="display: inline-block; margin-left: 15px;">
 										Please Enter Seller Id
 									 </div>  
                                     <input 
 										type='text'
 										class="form-control " 
-										id='Remarks' 
-										name="Remarks" 
-										#regRemarks = "ngModel"
-										[(ngModel)]='rRemarks'
+										id='Retailer' 
+										name="Retailer" 
+										#regRetailer = "ngModel"
+										[(ngModel)]='rRetailer'
 										placeholder="Enter Retailer Id" 
 										required/>
 								</div>

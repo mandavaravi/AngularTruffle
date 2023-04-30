@@ -5,7 +5,7 @@
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-toolbar-row>
-      <span>Angular + Truffle = 💓ÐAPP</span>
+      <span>Insta cart</span>
     </mat-toolbar-row>
     <mat-nav-list>
       <mat-list-item [routerLink]="['/home']">
@@ -18,10 +18,9 @@
       </mat-list-item>
 
       <!--  -->
-      <mat-list-item [routerLink]="['/item-list']">
-        <!-- <mat-icon>home</mat-icon> --> 
+      <!-- <mat-list-item [routerLink]="['/item-list']">
         Items List
-      </mat-list-item>
+      </mat-list-item> -->
       <mat-list-item [routerLink]="['/buyer-signup']">
         <!-- <mat-icon>money</mat-icon> -->
         buyer-signup
@@ -68,27 +67,7 @@
       <button mat-icon-button [routerLink]="['/account']">
         <mat-icon>person</mat-icon>
       </button>
-      <!-- <button mat-icon-button [routerLink]="['/item-list']">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-icon-button [routerLink]="['/buyer-signup']">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-icon-button [routerLink]="['/seller-signup']">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-icon-button [routerLink]="['/cart-list']">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-icon-button [routerLink]="['/bill-list']">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-icon-button [routerLink]="['/seller-items']">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button mat-icon-button [routerLink]="['/seller-add-item']">
-        <mat-icon>person</mat-icon>
-      </button> -->
+     
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

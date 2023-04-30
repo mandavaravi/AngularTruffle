@@ -5,32 +5,37 @@ contract Payment {
     // address origenTransferencia;
     address payable destinoTransferencia;
     uint montoTransferencia;
-    
+
     // constructor() {
     //     origenTransferencia = msg.sender;
     // }
 
-    event TransferirMonto(address payable _destinoTransferencia, address payable _origenTransferencia, uint montoTransferencia);
-    
-    function nuevaTransaccion(address payable _destinoTransferencia) public payable returns (bool){
+    event TransferirMonto(
+        address payable _destinoTransferencia,
+        address payable _origenTransferencia,
+        uint montoTransferencia
+    );
+
+    function nuevaTransaccion(
+        address payable _destinoTransferencia
+    ) public payable returns (bool) {
         destinoTransferencia = _destinoTransferencia;
         destinoTransferencia.transfer(msg.value);
         emit TransferirMonto(destinoTransferencia, from, msg.value);
         return true;
     }
-    function verBalanceCuenta() public pure returns (uint ) {
+
+    function verBalanceCuenta() public pure returns (uint) {
         return 1000;
     }
 
     function getAll() public pure returns (uint) {
         return 1000;
-    } 
+    }
 
-    
-// }
+    // }
 
-
-// contract Transfer {
+    // contract Transfer {
     address payable from;
     address payable to;
 
@@ -318,7 +323,9 @@ contract Payment {
         itemIds.push(itemId);
     }
 
-    function viewInventory(address sellerId) public view returns (ItemStruct[] memory) {
+    function viewInventory(
+        address sellerId
+    ) public view returns (ItemStruct[] memory) {
         return retailerToInv[sellerId];
     }
 
@@ -374,6 +381,25 @@ contract Payment {
     uint256 orderIdCounter = 0;
     mapping(address => uint256) userToOrderId;
     mapping(uint256 => ItemStruct[]) orderToDetails;
+
+    struct OrderDetailsStruct {
+        address retailerId;
+        uint256 orderAmount;
+    }
+
+    mapping(uint256 => OrderDetailsStruct) orderIdToDetails;
+
+
+    function placeOrderNew(
+        address retId,
+        uint256 orderId,
+        uint256 orderAmount
+    )public returns (bool) {
+        userToOrderId[from] = orderId;
+        OrderDetailsStruct memory temp = OrderDetailsStruct(retId, orderAmount);
+        orderIdToDetails[orderId] = (temp);
+        return true;
+    }
 
     function viewOrdersByUserId(
         address userId

@@ -11,68 +11,68 @@ export class SellerAddItemComponent implements OnInit {
 
   rName = '';
   rImage = '';
-  rPrice : number ;
-  rStock : number;
+  rPrice: number;
+  rStock: number;
   rDescription = '';
-  rSubCategory : any = null;
+  rSubCategory: any = null;
   rCategory: any = null;
-  rRemarks = '';
-  clist : any = [];
-  sclist : any = [];
+  rRetailer = '';
+  clist: any = [];
+  sclist: any = [];
 
 
   constructor(protected router: Router, protected emartService: EmartService) { }
 
   ngOnInit(): void {
 
-    // if(JSON.parse(localStorage.getItem("currentSeller")).retailerId != 0){
-      this.emartService.getAllCategories().subscribe
+    this.emartService.getDataJSON().subscribe
       (
         (res) => {
-        this.clist = res;
-      })
-    // }
-    // else{
-    //   this.router.navigate(['/']);
-    // }
+          this.clist = res;
+        })
+
+    this.clist = this.emartService.getDataJSON().subscribe((response: any) => {
+      const clistTemp = response['allCategories'];
+      console.log('type : ' + typeof (clistTemp));
+      this.clist = Array.from(clistTemp);
+      console.log('type : ' + (this.clist[0]));
+      // this.emartService.setLocalItems(this.allItems); 
+    });
 
   }
 
-  addItem(){
-    let subcat : any;
-    for(let i of this.sclist){
-      if(this.rSubCategory == i.subCategoryId){
-        subcat  = i;
+  addItem() {
+    let subcat: any;
+    for (let i of this.sclist) {
+      if (this.rSubCategory == i.subCategoryId) {
+        subcat = i;
         break;
       }
     }
     let item: any = {
-      itemId : 0,
-      itemName : this.rName,
-      itemImage : this.rImage,
-      itemPrice : this.rPrice,
-      itemDescription : this.rDescription,
-      itemRemarks : this.rRemarks,
-      itemStock : this.rStock,
-      subCategory : subcat,
-      seller : {retailerId : JSON.parse(localStorage.getItem("currentSeller")).retailerId}
+      itemId: 0,
+      itemName: this.rName,
+      itemImage: this.rImage,
+      itemPrice: this.rPrice,
+      quantity: this.rStock,
+      categoryId: this.rCategory,
+      retailerId: this.rRetailer
     };
-    
-    return this.emartService.addItem(item).subscribe
-    (
-      (res) => {
-      item = res;
-      this.router.navigate(['/seller-items']);
+
+    this.emartService.getDataJSON().subscribe((response: any) => {
+      let jsonData = response;
+      jsonData['allretailersInvs'][this.rRetailer].push(item);
+      alert(JSON.stringify( jsonData['allretailersInvs'][this.rRetailer][0]));
+      // this.emartService.setDataJSON(jsonData).subscribe((res: any) => {
+      //   alert('post success');
+      // });
+      // console.log('type : ' + typeof (currInv));
+      // this.clist = Array.from(currInv); 
+
+      // console.log('type : ' + (this.clist[0]));
+      // this.emartService.setLocalItems(this.allItems); 
     });
 
   }
-  
 
-  GetSubCategory(categoryId: number){
-    this.emartService.getSubCategories(categoryId).subscribe
-    (
-      (res) => {
-      this.sclist = res;
-    });
-  }
 }

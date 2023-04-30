@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     alert("item list ngOn");
     this.emartService.getAllSellers().subscribe((response: any) => {
-      const retList = response.retailersList;
+      const retList = Object.values(response);
       console.log('type : ' + typeof (retList));
       this.allRetailers = Array.from(retList);
       console.log('type : ' + typeof (this.allRetailers[0]));
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     this.searchBar = '';
     this.searchedRetailers = [];
     this.isSearched = false;
-  }
+  } 
 
   searchItems() {
     this.searchedRetailers = [];
