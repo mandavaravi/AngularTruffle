@@ -14,9 +14,11 @@ export class SellerItemsComponent implements OnInit {
   ngOnInit(): void {
 
     // if(JSON.parse(localStorage.getItem("currentSeller")).retailerId != 0){
-      this.emartService.getAllSelleritems(JSON.parse(localStorage.getItem("currentSeller")).retailerId).subscribe((response)=> 
+      alert(this.emartService.getDirection());
+      this.emartService.getAllSelleritems(this.emartService.getDirection()).subscribe((response)=> 
         {
           this.allItems = response;
+          console.log(this.allItems);
         }
       );
     // }
@@ -30,11 +32,8 @@ export class SellerItemsComponent implements OnInit {
     this.router.navigate(['/seller-add-item']);
   }
 
-  viewItem(itemId: number){
-
-  }
-
-  editItem(itemId: number){
-
+  editItem(item){
+    this.emartService.setEditedItem(item);
+    this.router.navigate(['/seller-add-item']);
   }
 }

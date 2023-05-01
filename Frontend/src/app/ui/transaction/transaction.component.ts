@@ -29,6 +29,7 @@ export class TransactionComponent implements OnInit {
       .connectAccount()
       .then((value: any) => {
         this.direction = value;
+        
       })
       .catch((error: any) => {
         console.log(error);

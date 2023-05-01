@@ -17,6 +17,7 @@ export class BillViewComponent implements OnInit {
   todayDate: Date = new Date();
   direction: any;
   isTransferSucces = false;
+  orderIdCount = 0;
 
 
 
@@ -28,63 +29,83 @@ export class BillViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
 
-    this.currentBuyer = this.emartService.getCurrentBuyer();
-    this.cartItems = this.emartService.getAllCart();
+    // this.contract
+    //   .connectAccount()
+    //   .then((value: any) => {
+    //     this.direction = value;
+    //     alert(this.direction);
+    //   })
+    //   .catch((error: any) => {
+    //     console.log(error);
+    //     this.contract.failure(
+    //       "Could't get the account data, please check if metamask is running correctly and refresh the page"
+    //     );
+    //   });
+    this.direction = this.emartService.getDirection();
+
+    // this.currentBuyer = this.emartService.getCurrentBuyer();
+    this.cartItems = this.emartService.getAllCart(this.direction).subscribe(
+      (res) => {
+        this.cartItems = res;
+      }
+    );
+
     let size = this.cartItems.length;
-    alert(JSON.stringify( this.cartItems[0])); 
+    alert(JSON.stringify(this.cartItems[0]));
     for (let i = 0; i < size; i++) {
       this.amount = this.amount + this.cartItems[i].itemPrice;
     }
 
-    this.contract
-      .connectAccount()
-      .then((value: any) => {
-        this.direction = value;
-        alert(this.direction);
-      })
-      .catch((error: any) => {
-        console.log(error);
-        this.contract.failure(
-          "Could't get the account data, please check if metamask is running correctly and refresh the page"
-        );
-      });
 
   }
 
   addBill() {
-    alert( JSON.stringify(this.cartItems[0]));
-    console.log('addBill 1 :: ' +  this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
+    let todayDate: Date = new Date();
+    alert(JSON.stringify(this.cartItems[0]));
+    console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';
 
     this.contract.trasnferEther(this.direction, this.cartItems[0]['retailerId'], this.amount).then((r) => {
-      console.log(r); 
+      console.log(r);
       alert('Tr comp 1');
       this.isTransferSucces = true;
 
       this.contract
-      .placeOrder(this.direction, this.cartItems[0]['retailerId'], 501, this.amount)
-      .then((r) => {
-        console.log(r);
-        alert('place order comp 1 getting');
-        // this.contract.success();  
-      })
-      .catch((e) => {
-        console.log(e);
-        alert('place order comp 2 : ' + e);
-        this.contract.failure("Getting failed");
-      });
+        .placeOrder(this.direction, this.cartItems[0]['retailerId'], 501, this.amount)
+        .then((r) => {
+          console.log(r);
+          alert('place order comp 1 getting');
+          alert(this.orderIdCount + 1);
+          this.emartService.addBill(this.direction, this.orderIdCount + 1).subscribe(
+            (res) => {
+              this.orderIdCount += 1;
+              alert('place succsess');
+            },
+            (err) => {
+              console.log(err);
+              if (err.status == 200) {
+                this.orderIdCount += 1;
+                alert('place succsess');
+                this.router.navigate(['bill-list']);
+              }
+            }
+          );
+          // this.contract.success();  
+        })
+        .catch((e) => {
+          console.log(e);
+          alert('place order comp 2 : ' + e);
+          this.contract.failure("Getting failed");
+        });
 
       this.contract.success();
     })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + 2);  
+        alert('Tr comp 2 : ' + 2);
         this.contract.failure("Transaction failed");
       });
-
-    this.router.navigate(['home']);
   }
 
   // sendEth(e) {

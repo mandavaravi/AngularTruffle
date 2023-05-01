@@ -4,6 +4,7 @@ import { ThreeBox } from "../../services/3box.service";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Identicon } from "../../services/identicon";
 import { Md5 } from "ts-md5/dist/md5";
+import { EmartService } from "src/app/services/instacart/emart.service";
 
 @Component({
   selector: "app-account",
@@ -20,13 +21,15 @@ export class AccountComponent {
   constructor(
     private contract: ContractService,
     private sanitizer: DomSanitizer,
-    private threebox: ThreeBox
+    private threebox: ThreeBox,
+    protected emartService: EmartService
   ) {
     this.contract
       .connectAccount()
       .then((value: any) => {
         this.direction = value[0];
         this.getDetails(this.direction);
+        this.emartService.setDirection(this.direction);
         console.log(this.direction);
         // this.profile = this.threebox.getProfile(this.direction).then((response) => {
         //     console.log(response);

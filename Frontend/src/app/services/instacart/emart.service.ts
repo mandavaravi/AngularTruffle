@@ -11,15 +11,30 @@ export class EmartService {
   currentBuyer: any = null;
   currentSeller: any = null;
   allItems: any;
+  direction: any;
+  editedItem: any;
 
   constructor(protected http: HttpClient) {
     this.cartItems = [];
     this.allBills = [];
   }
 
-  getDataJSON(): any {
-    return this.http.get('/assets/data.json');
+  setDirection(orgAcc) {
+    this.direction = orgAcc;
   }
+
+  getDirection() {
+    return this.direction;
+  }
+
+  setEditedItem(item) {
+    this.editedItem = item;
+  }
+
+  getEditedItem() {
+    return this.editedItem;
+  }
+
 
   /*
   * ******************************************************************************************* ******************************************************************************************
@@ -33,83 +48,54 @@ export class EmartService {
 
   getAllSelleritems(retailerId) {
     // http://localhost:3000/add_update_inv
-    return this.http.post('http://localhost:3000/add_update_inv', {"type": "viewinv","retailerId": retailerId});
+    return this.http.post('http://localhost:3000/add_update_inv', { "type": "viewinv", "retailerId": retailerId });
   }
 
-  addItem(item: any) {
-    return this.http.post('http://localhost:8083/ItemService/itemservice/additem', item);
+  addItem(item: any, retailerId) {
+    return this.http.post('http://localhost:3000/add_update_inv/', { "type": "add", "retailerId": retailerId, "itemList": item });
   }
 
-
-  getAllItems(): any {
-    return this.http.get('/assets/data.json');
+  updateItem(item: any, retailerId) {
+    return this.http.post('http://localhost:3000/add_update_inv/', { "type": "update", "retailerId": retailerId, "itemList": item });
   }
 
   setLocalItems(itemsList: any) {
     this.allItems = itemsList;
-    // console.log(this.allItems);
   }
 
-  getItem(itemId): any { 
+  getItem(itemId): any {
     for (let i = 0; i < this.allItems.length; i++) {
       if (itemId == this.allItems[i]['itemId']) {
         return this.allItems[i];
       }
     }
   }
-
-  // // // // // // // // // // 
-  getAllCategories() {
-    return this.http.get('http://localhost:8083/ItemService/itemservice/category/all');
-  }
-
-  getSubCategories(categoryId: any) {
-    return this.http.get('http://localhost:8083/ItemService/itemservice/subcategory/' + categoryId);
-  }
-  // // // // // // // // // // 
-
   /*
   * ******************************************************************************************* ******************************************************************************************
   * ******************************************************************************************* ******************************************************************************************
   * ******************************************************************************************* ******************************************************************************************
   */
 
-  setAllBills(billsList: any) {
-    this.allBills = billsList;
-  }
 
-  getAllBillsService() {
-    return this.allBills;
-  }
-
-  getAllBills(buyerId: number): any {
-    return this.http.get('http://localhost:8083/ItemService/itemservice/allBills/' + buyerId);
-  }
-
-  addBill(todayDate: Date, total: number) {
-    let allBillDetails: any = [];
-    for (let i = 0; i < this.cartItems.length; i++) {
-      allBillDetails.push({
-        billDetailsId: 0,
-        bill: null,
-        item: this.cartItems[i]
+  getAllBills(buyerId): any {
+    return this.http.post('http://localhost:3000/order',
+      {
+        "type": "vieworder",
+        "userId": buyerId
       });
-    }
+  }
 
-    let bill: any = {
-      billId: 0,
-      billType: 'Credit',
-      billDate: todayDate,
-      billRemarks: 'Paid',
-      billAmount: total,
-      buyer: {
-        buyerId: this.getCurrentBuyer().buyerId
-      },
-      allBillDetails: allBillDetails
-    }
+  addBill(originalAccount, orderId) {
+    let allBillDetails: any = [];
+    let temp = this.cartItems;
     this.cartItems = [];
     allBillDetails = [];
-    return this.http.post("http://localhost:8083/ItemService/itemservice/addBill", bill);
+    return this.http.post("http://localhost:3000/order", {
+      "type": "add",
+      "userId": originalAccount,
+      "orderId": orderId,
+      "itemList": temp
+    });
   }
 
 
@@ -120,35 +106,41 @@ export class EmartService {
   */
 
 
-  addToCart(itemObj: any) {
-    this.cartItems.push(itemObj);
-    let tempObj: any;
-    this.http.get('/assets/data.json').subscribe(result => {
-      console.log(result);
-      tempObj = result;
+  addToCart(itemObjArr, originalAccount) {
+    // this.cartItems.push(itemObj);
+    return this.http.post("http://localhost:3000/add_update_cart", {
+      "type": "add",
+      "userId": originalAccount,
+      "itemList": itemObjArr
     });
-    //  this.http.put('/assets/data.json', it).subscribe(result => {
-    //   console.log(result);
-    // });
   }
 
-  getAllCart() {
-    return [].concat(this.cartItems);
+  getAllCart(originalAccount) {
+    // return [].concat(this.cartItems);
+    return this.http.post("http://localhost:3000/add_update_cart", {
+      "type": "viewcart",
+      "userId": originalAccount
+    });
   }
 
   setAllCart(cartItems: any) {
     this.cartItems = cartItems;
   }
 
-  deleteCartItem(itemNo: number) {
-    let size = this.cartItems.length;
-    for (let i = 0; i < size; i++) {
-      if (this.cartItems[i].itemId == itemNo) {
-        this.cartItems.splice(i, 1);
-        break;
-      }
-    }
-    return [].concat(this.cartItems);
+  deleteCartItem(itemObjArr, originalAccount) {
+    return this.http.post("http://localhost:3000/add_update_cart", {
+      "type": "delete",
+      "userId": originalAccount,
+      "itemId": itemObjArr
+    });
+  }
+
+  updateCartItem(itemObjArr, originalAccount) {
+    return this.http.post("http://localhost:3000/add_update_cart", {
+      "type": "update",
+      "userId": originalAccount[0],
+      "itemList": itemObjArr
+    });
   }
 
 
@@ -173,31 +165,25 @@ export class EmartService {
   }
 
   addBuyer(buyer: any) {
-    return this.http.post('http://localhost:8083/LoginService/login/add', buyer);
+    return this.http.post('http://localhost:3000/newUser_Retailer', {
+      "type": "user",
+      "userId": buyer.userId,
+      "userName": buyer.userName,
+      "homeAddress": buyer.homeAddress
+    });
   }
 
-  validateBuyer(user: string, password: string) {
-
-    let uData = user + ":" + password;
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', uData);
-    return this.http.get('http://localhost:8083/LoginService/login/validate', { headers });
-  }
 
 
   addSeller(seller: any) {
-    return this.http.post('http://localhost:8083/LoginService/sellerlogin/add', seller);
+    return this.http.post('http://localhost:3000/newUser_Retailer', {
+      "type": "retailer",
+      "retailerId": seller.retailerId,
+      "retailerName": seller.retailerName,
+      "retailerImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+      "homeAddress": seller.homeAddress
+    });
   }
-
-  validateSeller(user: string, password: string) {
-
-    let uData = user + ":" + password;
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', uData);
-    return this.http.get('http://localhost:8083/LoginService/sellerlogin/validate', { headers });
-  }
-
-
 
   /*
   * ******************************************************************************************* ******************************************************************************************

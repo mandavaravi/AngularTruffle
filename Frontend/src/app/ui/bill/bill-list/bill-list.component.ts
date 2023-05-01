@@ -23,12 +23,13 @@ export class BillListComponent implements OnInit {
 
     // if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
 
-    this.currentBuyer = this.emartService.getCurrentBuyer();
+    // this.currentBuyer = this.emartService.getCurrentBuyer();
     this.allBills = [];
-    this.emartService.getAllBills(JSON.parse(localStorage.getItem("currentBuyer")).buyerId).subscribe(
+    this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
       (res) => {
+        alert('all bills : ' + JSON.stringify(res));
         this.allBills = res;
-        this.emartService.setAllBills(this.allBills);
+        // this.emartService.setAllBills(this.allBills);
 
         if (this.allBills.length != 0) {
           this.isEmpty = true;
@@ -39,14 +40,6 @@ export class BillListComponent implements OnInit {
 
       }
     );
-
-
-    // console.log("isEmpty:"+ this.isEmpty);
-    //     }
-    // else{
-    //   this.router.navigate(['/']);
-    // }
-
 
 
   }

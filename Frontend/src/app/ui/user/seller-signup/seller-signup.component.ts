@@ -37,10 +37,11 @@ export class SellerSignupComponent implements OnInit {
   addSeller(){
     // if(this.checkPassword()){
     let seller: any = {
-      "retailerId" : 0,
+      "retailerId" : this.rretailerId,
       "retailerName" : this.rName,
       "homeAddress" : this.rAddress
     }
+    alert(JSON.stringify(seller));
 
     this.emartService.addSeller(seller).subscribe((response)=> 
       {

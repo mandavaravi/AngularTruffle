@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContractService } from 'src/app/services/contract/contract.service';
 import { EmartService } from 'src/app/services/instacart/emart.service';
 
 
@@ -16,16 +17,32 @@ export class HomeComponent implements OnInit {
   isSearched: boolean = false;
   searchedRetailers: any;
   searchBar: string;
-  constructor(protected emartService: EmartService, protected router: Router) {
+  direction: any;
+  constructor(protected emartService: EmartService, protected router: Router, private contract: ContractService) {
     this.searchedRetailers = [];
     this.searchBar = '';
   }
 
   ngOnInit(): void {
+
+    this.contract
+      .connectAccount()
+      .then((value: any) => {
+        this.direction = value;
+        this.emartService.setDirection(this.direction);
+        alert(this.direction);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        this.contract.failure(
+          "Could't get the account data, please check if metamask is running correctly and refresh the page"
+        );
+      });
+
     alert("item list ngOn");
     this.emartService.getAllSellers().subscribe((response: any) => {
       const retList = Object.values(response);
-      console.log('type : ' + typeof (retList));
+      console.log('type : ' + (retList));
       this.allRetailers = Array.from(retList);
       console.log('type : ' + typeof (this.allRetailers[0]));
       this.emartService.setLocalItems(this.allRetailers);
@@ -42,7 +59,7 @@ export class HomeComponent implements OnInit {
     this.searchBar = '';
     this.searchedRetailers = [];
     this.isSearched = false;
-  } 
+  }
 
   searchItems() {
     this.searchedRetailers = [];

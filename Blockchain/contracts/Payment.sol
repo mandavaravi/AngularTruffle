@@ -1,7 +1,28 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.4;
 
-contract Payment {
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+// import "@openzeppelin/contracts@4.5.0/security/Pausable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+
+
+
+
+contract Payment is ERC721, ERC721Enumerable, Ownable{
+
+    // ===== 1. Property Variables ===== //
+
+    using Counters for Counters.Counter;
+
+    //Counters.Counter private _tokenIdCounter;
+
+    uint256 public MINT_PRICE = 0.05 ether;
+    uint public MAX_SUPPLY = 100;
+
+    
+
     // address origenTransferencia;
     address payable destinoTransferencia;
     uint montoTransferencia;
@@ -39,9 +60,10 @@ contract Payment {
     address payable from;
     address payable to;
 
-    constructor() {
-        from = payable(msg.sender);
-    }
+    // constructor() {
+    //     from = payable(msg.sender);
+    // }
+    
 
     event Pay(address _to, address _from, uint amt);
 
@@ -84,14 +106,15 @@ contract Payment {
         }
     }
 
-    // Counters.Counter private _tokenIdCounter;
-    // address public scOwner;
+    Counters.Counter private _tokenIdCounter;
+    address public scOwner;
 
-    // constructor() ERC721("Test2", "IC") {
-    //     scOwner = msg.sender;
-    //     // Start token ID at 1. By default is starts at 0.
-    //     _tokenIdCounter.increment();
-    // }
+    constructor() ERC721("Test2", "IC") {
+        scOwner = msg.sender;
+        // Start token ID at 1. By default is starts at 0.
+        _tokenIdCounter.increment();
+        from = payable(msg.sender);
+    }
 
     //print
     event LogMessage(string message);
@@ -387,7 +410,14 @@ contract Payment {
         uint256 orderAmount;
     }
 
+    struct Nft {
+        uint256 tokenId;
+        string image_link;
+    }
+
     mapping(uint256 => OrderDetailsStruct) orderIdToDetails;
+
+    mapping(address => Nft[]) userToNft;
 
 
     function placeOrderNew(
@@ -398,8 +428,22 @@ contract Payment {
         userToOrderId[from] = orderId;
         OrderDetailsStruct memory temp = OrderDetailsStruct(retId, orderAmount);
         orderIdToDetails[orderId] = (temp);
+
+        //NFT minting
+        require(orderAmount >= 5, "Wont get any NFT");
+        uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
+        _safeMint(from, tokenId);
+        Nft memory newNft = Nft(
+            tokenId,
+            "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png"
+    );
+
+        userToNft[from].push(newNft);
+
         return true;
     }
+
 
     function viewOrdersByUserId(
         address userId
@@ -456,7 +500,7 @@ contract Payment {
 
     // }
 
-    /*
+    
     //===============================================//
     // ===== 5. Other Functions ===== //
 
@@ -480,5 +524,5 @@ contract Payment {
     {
         return super.supportsInterface(interfaceId);
     }
-    */
+    
 }

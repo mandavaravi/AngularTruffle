@@ -44,20 +44,6 @@ export class ItemListComponent implements OnInit {
         }
       );
 
-      // this.emartService.getAllItems().subscribe((response: any) => {
-      //   // this.allItems =  response.itemsList; 
-      //   const itemsList = response.itemsList;
-      //   console.log('type : ' + typeof (itemsList));
-      //   this.allItems = Array.from(itemsList); 
-      //   console.log('type : ' + typeof (this.allItems[0]));
-      //   this.emartService.setLocalItems(this.allItems);
-      // });
-  
-      alert("item list ngOn");
-    // }
-    // else{
-    //   this.router.navigate(['/']);
-    // }
 
   }
 
@@ -66,14 +52,17 @@ export class ItemListComponent implements OnInit {
   }
 
   addToCart(item: any){
-    this.emartService.addToCart(item);
+    alert(JSON.stringify([item]) + " :::: " + this.emartService.getDirection());
+    this.emartService.addToCart([item], this.emartService.getDirection()).subscribe((response: any) => {
+      alert('add success');
+    });
   }
 
   filterItems()
   {
     this.filteredItems =[];
     // console.log("filter length"+ this.filteredItems.length);
-    if (this.toPrice > this.fromPrice) {
+    if (this.toPrice > this.fromPrice) { 
       
       for (let item of this.allItems) {
         if (item.itemPrice <= this.toPrice && item.itemPrice >= this.fromPrice) {

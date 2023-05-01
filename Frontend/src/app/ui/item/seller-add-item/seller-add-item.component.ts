@@ -10,68 +10,89 @@ import { EmartService } from 'src/app/services/instacart/emart.service';
 export class SellerAddItemComponent implements OnInit {
 
   rName = '';
+  rId = 0;
   rImage = '';
   rPrice: number;
   rStock: number;
   rDescription = '';
-  rSubCategory: any = null;
   rCategory: any = null;
   rRetailer = '';
-  clist: any = [];
-  sclist: any = [];
+  isEdit = false;
+  clist: any = [{
+    "categoryId": 101,
+    "categoryName": "1st Cat"
+  },
+  {
+    "categoryId": 102,
+    "categoryName": "2nd Cat"
+  },
+  {
+    "categoryId": 103,
+    "categoryName": "3rd Cat"
+  },
+  {
+    "categoryId": 104,
+    "categoryName": "4th Cat"
+  }];
 
 
   constructor(protected router: Router, protected emartService: EmartService) { }
 
   ngOnInit(): void {
-
-    this.emartService.getDataJSON().subscribe
-      (
-        (res) => {
-          this.clist = res;
-        })
-
-    this.clist = this.emartService.getDataJSON().subscribe((response: any) => {
-      const clistTemp = response['allCategories'];
-      console.log('type : ' + typeof (clistTemp));
-      this.clist = Array.from(clistTemp);
-      console.log('type : ' + (this.clist[0]));
-      // this.emartService.setLocalItems(this.allItems); 
-    });
-
+    let temp = this.emartService.getEditedItem();
+    if (temp != undefined) {
+      alert(JSON.stringify(temp));
+      this.rName = temp.itemName;
+      this.rId = temp.itemId;
+      this.rImage = temp.itemImage;
+      this.rPrice = temp.itemPrice;
+      this.rStock = temp.quantity;
+      this.rCategory = temp.categoryId;
+      this.rRetailer = temp.retailerId;
+      this.isEdit = true;
+      this.emartService.setEditedItem(undefined);
+    }
   }
 
   addItem() {
-    let subcat: any;
-    for (let i of this.sclist) {
-      if (this.rSubCategory == i.subCategoryId) {
-        subcat = i;
-        break;
-      }
-    }
+    // let subcat: any;
+    // for (let i of this.sclist) {
+    //   if (this.rSubCategory == i.subCategoryId) {
+    //     subcat = i;
+    //     break;
+    //   }
+    // }
     let item: any = {
-      itemId: 0,
+      itemId: this.rId,
       itemName: this.rName,
       itemImage: this.rImage,
       itemPrice: this.rPrice,
       quantity: this.rStock,
       categoryId: this.rCategory,
-      retailerId: this.rRetailer
+      retailerId: this.rRetailer,
+      pricePerQuantity: this.rStock*this.rPrice
     };
 
-    this.emartService.getDataJSON().subscribe((response: any) => {
-      let jsonData = response;
-      jsonData['allretailersInvs'][this.rRetailer].push(item);
-      alert(JSON.stringify( jsonData['allretailersInvs'][this.rRetailer][0]));
-      // this.emartService.setDataJSON(jsonData).subscribe((res: any) => {
-      //   alert('post success');
-      // });
-      // console.log('type : ' + typeof (currInv));
-      // this.clist = Array.from(currInv); 
+    // this.emartService.getDataJSON().subscribe((response: any) => {
+    //   let jsonData = response;
+    //   jsonData['allretailersInvs'][this.rRetailer].push(item);
+    //   alert(JSON.stringify( jsonData['allretailersInvs'][this.rRetailer][0]));
+    // });
 
-      // console.log('type : ' + (this.clist[0]));
-      // this.emartService.setLocalItems(this.allItems); 
-    });
+    alert(JSON.stringify([item]) + " :: " + this.rRetailer);
+    if (this.isEdit) {
+      alert(this.rStock);
+      this.emartService.updateItem([item], this.rRetailer).subscribe((response: any) => {
+        console.log(response);
+      });
+      this.router.navigate(['seller-items']);
+    }
+    else {
+      this.emartService.addItem([item], this.rRetailer).subscribe((response: any) => {
+        console.log(response);
+      });
+    }
+
 
   }
 

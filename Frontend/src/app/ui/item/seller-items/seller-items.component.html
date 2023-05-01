@@ -1,5 +1,5 @@
 
-<div class="container mt-3">
+<div class="container mt-3" style="color: black;">
     <div class="row">
 
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -24,7 +24,7 @@
                 <h6 class="text-left">{{ item.itemName }}</h6>
               </div>
               <div class="col-6">
-                <p class="text-left">Description: {{ item.itemDescription }}</p>
+                <p class="text-left">Stock: {{ item.quantity }}</p>
               </div>
             </div>
             <div class="row">
@@ -36,7 +36,8 @@
               <div class="col-6  ">
                 <button 
                   type="button" 
-                  class="btn btn-primary w-100">
+                  class="btn btn-primary w-100"
+                  (click)="editItem(item)">
                   <i class="material-icons small align-middle">create</i>
                   <small> Edit</small>
                 </button>
