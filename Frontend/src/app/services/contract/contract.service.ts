@@ -125,10 +125,10 @@ export class ContractService {
   }
 
   public async getAll(originAccount) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await payment.getAll({ from: originAccount[0] });
+    // const paymentContract = contract(tokenAbi);
+    // paymentContract.setProvider(this.provider);
+    // let payment = await paymentContract.new({ from: originAccount[0] });
+    let balance = await this.payment.getAll({ from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }

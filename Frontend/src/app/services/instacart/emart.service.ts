@@ -81,15 +81,15 @@ export class EmartService {
     return this.http.post('http://localhost:3000/order',
       {
         "type": "vieworder",
-        "userId": buyerId
+        "userId": buyerId+""
       });
   }
 
   addBill(originalAccount, orderId) {
-    let allBillDetails: any = [];
     let temp = this.cartItems;
+    console.clear();
+    console.log(JSON.stringify(temp));
     this.cartItems = [];
-    allBillDetails = [];
     return this.http.post("http://localhost:3000/order", {
       "type": "add",
       "userId": originalAccount,
@@ -97,7 +97,7 @@ export class EmartService {
       "itemList": temp
     });
   }
-
+ 
 
   /*
   * ******************************************************************************************* ******************************************************************************************
@@ -108,6 +108,7 @@ export class EmartService {
 
   addToCart(itemObjArr, originalAccount) {
     // this.cartItems.push(itemObj);
+    console.log(JSON.stringify(itemObjArr));
     return this.http.post("http://localhost:3000/add_update_cart", {
       "type": "add",
       "userId": originalAccount,

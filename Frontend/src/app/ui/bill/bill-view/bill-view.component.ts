@@ -68,21 +68,36 @@ export class BillViewComponent implements OnInit {
 
     this.contract.trasnferEther(this.direction, this.cartItems[0]['retailerId'], this.amount).then((r) => {
       console.log(r);
-      alert('Tr comp 1');
+      alert('Tr comp 1 - 71');
       this.isTransferSucces = true;
 
       this.contract
         .placeOrder(this.direction, this.cartItems[0]['retailerId'], 501, this.amount)
         .then((r) => {
           console.log(r);
-          alert('place order comp 1 getting');
-          alert(this.orderIdCount + 1);
+          alert('place order comp 1 getting - 78');
+          // alert(this.orderIdCount + 1);  
           this.emartService.addBill(this.direction, this.orderIdCount + 1).subscribe(
             (res) => {
               this.orderIdCount += 1;
-              alert('place succsess');
+              alert('place succsess- 83');
+              for(let i=0; i<this.cartItems.length; i++){
+                this.cartItems = this.emartService.deleteCartItem(this.cartItems[i], this.emartService.getDirection()).subscribe(
+                  (res) => {
+                    console.log(res);
+                    alert('delete succsess - 88');
+                  },
+                  (err) =>{
+                    console.log(err.status);
+                    alert('delete fail - 92');
+                    if(err.status == 200){
+                      alert('delete fail - 94');
+                    }
+                  }
+                );
+              }
             },
-            (err) => {
+            (err) => { 
               console.log(err);
               if (err.status == 200) {
                 this.orderIdCount += 1;

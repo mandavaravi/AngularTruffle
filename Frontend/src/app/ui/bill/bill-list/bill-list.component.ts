@@ -12,9 +12,10 @@ import { EmartService } from 'src/app/services/instacart/emart.service';
 })
 export class BillListComponent implements OnInit {
 
-  allBills: any[];
+  allBills: any;
   currentBuyer: any;
   isEmpty: boolean = false;
+  allorderIds: any;
   constructor(protected emartService: EmartService, protected router: Router) {
 
   }
@@ -25,13 +26,18 @@ export class BillListComponent implements OnInit {
 
     // this.currentBuyer = this.emartService.getCurrentBuyer();
     this.allBills = [];
+    alert('bill list -- '+this.emartService.getDirection());
     this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
       (res) => {
         alert('all bills : ' + JSON.stringify(res));
-        this.allBills = res;
+        this.allBills = (Object.values(res));
+        this.allorderIds = Object.keys(res);
+        console.clear();
+        console.log(this.allBills[0][0]);
         // this.emartService.setAllBills(this.allBills);
 
         if (this.allBills.length != 0) {
+          alert('true');
           this.isEmpty = true;
         }
         else {

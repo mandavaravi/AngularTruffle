@@ -53,7 +53,7 @@ export class AccountComponent {
         new Identicon(Md5.hashStr(account + "Instacart"), {
           size: 32,
           format: "svg",
-        }).toString(true)
+        }).toString(true) 
       )
     );
   }
