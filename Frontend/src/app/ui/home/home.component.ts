@@ -25,21 +25,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.contract
-      .connectAccount()
-      .then((value: any) => {
-        this.direction = value;
-        this.emartService.setDirection(this.direction);
-        alert(this.direction);
-      })
-      .catch((error: any) => {
-        console.log(error);
-        this.contract.failure(
-          "Could't get the account data, please check if metamask is running correctly and refresh the page"
-        );
-      });
-
-    alert("item list ngOn");
+    if (this.emartService.getDirection() == undefined) {
+      this.contract
+        .connectAccount()
+        .then((value: any) => {
+          this.direction = value;
+          this.emartService.setDirection(this.direction);
+          alert(this.direction);
+        })
+        .catch((error: any) => {
+          console.log(error);
+          this.contract.failure(
+            "Could't get the account data, please check if metamask is running correctly and refresh the page"
+          );
+        });
+    }
     this.emartService.getAllSellers().subscribe((response: any) => {
       const retList = Object.values(response);
       console.log('type : ' + (retList));

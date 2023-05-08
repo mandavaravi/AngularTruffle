@@ -24,26 +24,29 @@ export class AccountComponent {
     private threebox: ThreeBox,
     protected emartService: EmartService
   ) {
-    this.contract
-      .connectAccount()
-      .then((value: any) => {
-        this.direction = value[0];
-        this.getDetails(this.direction);
-        this.emartService.setDirection(this.direction);
-        console.log(this.direction);
-        // this.profile = this.threebox.getProfile(this.direction).then((response) => {
-        //     console.log(response);
-        //     this.profile = response;
-        //     this.url = this.profile.image[0].contentUrl["/"];
-        //     alert("img url in acc :: "+this.url);
-        //   });
-        this.getImage(this.direction);
-      })
-      .catch((error: any) => {
-        this.contract.failure(
-          "Could't get the account data, please check if metamask is running correctly and refresh the page"
-        );
-      });
+    alert(this.emartService.getDirection() != undefined);
+    if (this.emartService.getDirection() == undefined) {
+      this.contract
+        .connectAccount()
+        .then((value: any) => {
+          this.direction = value[0];
+          this.getDetails(this.direction);
+          this.emartService.setDirection(this.direction);
+          console.log(this.direction);
+          // this.profile = this.threebox.getProfile(this.direction).then((response) => {
+          //     console.log(response);
+          //     this.profile = response;
+          //     this.url = this.profile.image[0].contentUrl["/"];
+          //     alert("img url in acc :: "+this.url);
+          //   });
+          this.getImage(this.direction);
+        })
+        .catch((error: any) => {
+          this.contract.failure(
+            "Could't get the account data, please check if metamask is running correctly and refresh the page"
+          );
+        });
+    }
   }
 
   getImage(account) {
@@ -53,7 +56,7 @@ export class AccountComponent {
         new Identicon(Md5.hashStr(account + "Instacart"), {
           size: 32,
           format: "svg",
-        }).toString(true) 
+        }).toString(true)
       )
     );
   }
@@ -67,6 +70,7 @@ export class AccountComponent {
       .connectAccount()
       .then((value: any) => {
         this.direction = value;
+        this.emartService.setDirection(this.direction);
         this.getDetails(this.direction);
       })
       .catch((error: any) => {

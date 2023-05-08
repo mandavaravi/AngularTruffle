@@ -29,19 +29,6 @@ export class BillViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    // this.contract
-    //   .connectAccount()
-    //   .then((value: any) => {
-    //     this.direction = value;
-    //     alert(this.direction);
-    //   })
-    //   .catch((error: any) => {
-    //     console.log(error);
-    //     this.contract.failure(
-    //       "Could't get the account data, please check if metamask is running correctly and refresh the page"
-    //     );
-    //   });
     this.direction = this.emartService.getDirection();
 
     // this.currentBuyer = this.emartService.getCurrentBuyer();
