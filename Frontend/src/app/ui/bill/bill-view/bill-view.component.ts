@@ -35,6 +35,12 @@ export class BillViewComponent implements OnInit {
     this.cartItems = this.emartService.getAllCart(this.direction).subscribe(
       (res) => {
         this.cartItems = res;
+
+        let size = this.cartItems.length;
+        for (let i = 0; i < size; i++) {
+          this.amount = this.amount + this.cartItems[i].itemPrice;
+        }
+        alert("bill view amnt :: " + this.amount);
       }
     );
 
@@ -43,13 +49,23 @@ export class BillViewComponent implements OnInit {
 
   addBill() {
     let size = this.cartItems.length;
+    this.amount = 0;
     for (let i = 0; i < size; i++) {
       this.amount = this.amount + this.cartItems[i].itemPrice;
     }
-    alert("bill view amnt :: " + this.amount);
     //alert(JSON.stringify(this.cartItems[0]));
     console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';
+
+    this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
+      (res) => {
+        //alert('all bills : ' + JSON.stringify(res));
+        
+        let allorderIds = Object.keys(res);
+        this.orderIdCount = +allorderIds[allorderIds.length - 1];
+
+      }
+    );
 
     this.contract.trasnferEther(this.direction, this.cartItems[0]['retailerId'], this.amount).then((r) => {
       console.log(r);
@@ -58,7 +74,7 @@ export class BillViewComponent implements OnInit {
       this.isTransferSucces = true;
 
       this.contract
-        .placeOrder(this.direction, this.cartItems[0]['retailerId'], 501, this.amount)
+        .placeOrder(this.direction, this.cartItems[0]['retailerId'], this.orderIdCount + 1, this.amount)
         .then((r) => {
           console.log(r);
           alert('Order details updated in contract');
@@ -82,6 +98,19 @@ export class BillViewComponent implements OnInit {
                   }
                 );
               }
+              this.emartService.getAllCart(this.emartService.getDirection()).subscribe(
+                (res) => {
+                  alert("get cart" + JSON.stringify(res));
+                },
+                (err) => {
+                  alert("get cart" );
+                  console.log(err.status);
+                  //alert('delete fail - 92');
+                  if (err.status == 200) {
+                    //alert('delete fail - 94');
+                  }
+                }
+              );
             },
             (err) => {
               console.log(err);
