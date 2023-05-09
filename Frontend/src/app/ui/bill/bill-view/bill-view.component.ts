@@ -60,7 +60,7 @@ export class BillViewComponent implements OnInit {
     this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
       (res) => {
         //alert('all bills : ' + JSON.stringify(res));
-        
+
         let allorderIds = Object.keys(res);
         this.orderIdCount = +allorderIds[allorderIds.length - 1];
 
@@ -81,15 +81,32 @@ export class BillViewComponent implements OnInit {
           // //alert(this.orderIdCount + 1);   
           this.emartService.addBill(this.direction, this.orderIdCount + 1).subscribe(
             (res) => {
-              this.orderIdCount += 1;
-              //alert('place succsess- 83');
-              for (let i = 0; i < size; i++) {
-                this.emartService.deleteCartItem(this.cartItems[i], this.emartService.getDirection()).subscribe(
+            },
+            (err) => {
+              console.log(err);
+              if (err.status == 200) {
+                //alert('place succsess- 83');
+                for (let i = 0; i < size; i++) {
+                  this.emartService.deleteCartItem(this.cartItems[i], this.emartService.getDirection()).subscribe(
+                    (res) => {
+                      console.log(res);
+                      //alert('delete succsess - 88');
+                    },
+                    (err) => {
+                      console.log(err.status);
+                      //alert('delete fail - 92');
+                      if (err.status == 200) {
+                        //alert('delete fail - 94');
+                      }
+                    }
+                  );
+                }
+                this.emartService.getAllCart(this.emartService.getDirection()).subscribe(
                   (res) => {
-                    console.log(res);
-                    //alert('delete succsess - 88');
+                    alert("get cart" + JSON.stringify(res));
                   },
                   (err) => {
+                    alert("get cart");
                     console.log(err.status);
                     //alert('delete fail - 92');
                     if (err.status == 200) {
@@ -97,26 +114,7 @@ export class BillViewComponent implements OnInit {
                     }
                   }
                 );
-              }
-              this.emartService.getAllCart(this.emartService.getDirection()).subscribe(
-                (res) => {
-                  alert("get cart" + JSON.stringify(res));
-                },
-                (err) => {
-                  alert("get cart" );
-                  console.log(err.status);
-                  //alert('delete fail - 92');
-                  if (err.status == 200) {
-                    //alert('delete fail - 94');
-                  }
-                }
-              );
-            },
-            (err) => {
-              console.log(err);
-              if (err.status == 200) {
-                this.orderIdCount += 1;
-                //alert('place succsess');
+
                 this.router.navigate(['bill-list']);
               }
             }
