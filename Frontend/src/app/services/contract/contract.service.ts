@@ -93,7 +93,7 @@ export class ContractService {
       const paymentContract = contract(tokenAbi);
       paymentContract.setProvider(this.provider);
       paymentContract.deployed().then((instance) => {
-        let finalAmount = this.web3.utils.toBN(amount)
+        let finalAmount = this.web3.utils.toBN(Math.floor(amount))
         console.log(finalAmount + " :: " + destinyAccount + ' :: ' + originAccount);
         return instance.nuevaTransaccion(
           destinyAccount,

@@ -43,10 +43,10 @@ export class BillViewComponent implements OnInit {
 
   addBill() {
     let size = this.cartItems.length;
-    alert("bill view amnt :: " + this.amount);
     for (let i = 0; i < size; i++) {
       this.amount = this.amount + this.cartItems[i].itemPrice;
     }
+    alert("bill view amnt :: " + this.amount);
     //alert(JSON.stringify(this.cartItems[0]));
     console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';
