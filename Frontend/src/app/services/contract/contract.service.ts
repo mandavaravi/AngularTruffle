@@ -295,7 +295,8 @@ export class ContractService {
 
   // can use this for placeOrder methods
   async placeOrder(originAccount, destinyAccount, orderId, orderAmount) {
-    let balance = await this.payment.placeOrderNew(destinyAccount, orderId, orderAmount, { from: originAccount[0] });
+    let finalAmount = this.web3.utils.toBN(Math.floor(orderAmount));
+    let balance = await this.payment.placeOrderNew(destinyAccount, orderId, finalAmount, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
   }
