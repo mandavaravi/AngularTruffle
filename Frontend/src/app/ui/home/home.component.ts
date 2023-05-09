@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    alert('landed in home');
 
     if (this.emartService.getDirection() == undefined) {
       this.contract
@@ -67,7 +68,7 @@ export class HomeComponent implements OnInit {
       this.isSearched = true;
       for (let item of this.allRetailers) {
         let temp: string = item.retailerName;
-        alert('search');
+        // alert('search');
         temp = temp.toLowerCase();
         if (temp.includes(this.searchBar.toLowerCase())) {
           this.searchedRetailers.push(item);

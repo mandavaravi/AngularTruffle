@@ -55,13 +55,6 @@ export class SellerAddItemComponent implements OnInit {
   }
 
   addItem() {
-    // let subcat: any;
-    // for (let i of this.sclist) {
-    //   if (this.rSubCategory == i.subCategoryId) {
-    //     subcat = i;
-    //     break;
-    //   }
-    // }
     let item: any = {
       itemId: this.rId,
       itemName: this.rName,
@@ -73,11 +66,6 @@ export class SellerAddItemComponent implements OnInit {
       pricePerQuantity: this.rStock*this.rPrice
     };
 
-    // this.emartService.getDataJSON().subscribe((response: any) => {
-    //   let jsonData = response;
-    //   jsonData['allretailersInvs'][this.rRetailer].push(item);
-    //   alert(JSON.stringify( jsonData['allretailersInvs'][this.rRetailer][0]));
-    // });
 
     alert(JSON.stringify([item]) + " :: " + this.rRetailer);
     if (this.isEdit) {
