@@ -1,7 +1,7 @@
 require("dotenv").config();
 const HDWalletProvider = require("truffle-hdwallet-provider");
 
-var mnemonic = process.env.MNENOMIC;
+var mnemonic = "width consider vivid mixture advice butter follow obtain spice dolphin canvas inmate";
 
 module.exports = {
   networks: {
@@ -10,9 +10,9 @@ module.exports = {
     //   port: 7545,
     //   network_id: "*"
     // },
-    goerli: {
-      provider: () => new HDWalletProvider(MNEMONIC, 'https://goerli.infura.io/v3/13210507435f43eba580f6f9d7ae9d5b'),
-      network_id: 5,
+    sepolia: {
+      provider: () => new HDWalletProvider(mnemonic, 'https://sepolia.infura.io/v3/13210507435f43eba580f6f9d7ae9d5b'),
+      network_id: 11155111,
       gas:4465030,       // Goerli's id
       confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
