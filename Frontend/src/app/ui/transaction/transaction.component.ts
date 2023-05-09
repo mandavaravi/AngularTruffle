@@ -49,41 +49,41 @@ export class TransactionComponent implements OnInit {
   sendEth(e) {
     console.log(e);
     this.address = this.transactionForm.value.sendaddress;
-    alert(this.address);
+    //alert(this.address);
     this.amount = this.transactionForm.value.amount;
-    alert(this.amount);
-    alert(this.direction);
+    //alert(this.amount);
+    //alert(this.direction);
 
     this.contract
       .trasnferEther(this.direction, this.address, this.amount)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1');
+        //alert('Tr comp 1');
         this.contract.success();
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Transaction failed");
       });
   }
 
   getAllItems() {
     // this.address = this.transactionForm.value.sendaddress;
-    // alert(this.address);
+    // //alert(this.address);
     // this.amount = this.transactionForm.value.amount;
-    // alert(this.amount);
-    // alert(this.direction);
+    // //alert(this.amount);
+    // //alert(this.direction);
     this.contract
       .getAllItems(this.direction)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -93,12 +93,12 @@ export class TransactionComponent implements OnInit {
       .getItemById(this.direction, 201)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -107,18 +107,18 @@ export class TransactionComponent implements OnInit {
   public temp1: number = 0;
   addUser() {
 
-    alert("name " + this.temp1 + " -- " + "addr " + this.temp1 + " -- " + this.tempAcc[this.temp1]);
+    //alert("name " + this.temp1 + " -- " + "addr " + this.temp1 + " -- " + this.tempAcc[this.temp1]);
     this.contract
       .addUser(this.direction, "name " + this.temp1 + "", "addr " + this.temp1 + "", this.tempAcc[this.temp1])
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         this.temp1++;
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -129,12 +129,12 @@ export class TransactionComponent implements OnInit {
       .then((r) => {
         // list of retailer structs
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -144,12 +144,12 @@ export class TransactionComponent implements OnInit {
       .getUserById(this.direction, this.direction[0])
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -162,12 +162,12 @@ export class TransactionComponent implements OnInit {
       .then((r) => {
         console.log(r);
         this.tempItIn++;
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -179,12 +179,12 @@ export class TransactionComponent implements OnInit {
       .viewCart(this.direction, this.direction)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -195,12 +195,12 @@ export class TransactionComponent implements OnInit {
       .updateCart(this.direction, this.direction, 201, 50)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -211,12 +211,12 @@ export class TransactionComponent implements OnInit {
       .removeItemFromCart(this.direction, this.direction, 201)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -238,18 +238,18 @@ export class TransactionComponent implements OnInit {
     ];
   addRetailer() {
 
-    alert("name " + this.temp + " -- " + "addr " + this.temp + " -- " + this.tempAcc[this.temp]);
+    //alert("name " + this.temp + " -- " + "addr " + this.temp + " -- " + this.tempAcc[this.temp]);
     this.contract
       .addRetailer(this.direction, this.tempAcc[this.temp], "name " + this.temp + "", "addr " + this.temp + "")
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         this.temp++;
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -260,12 +260,12 @@ export class TransactionComponent implements OnInit {
       .getRetailerById(this.direction, this.direction)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -277,12 +277,12 @@ export class TransactionComponent implements OnInit {
       .then((r) => {
         // list of retailer structs
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -295,12 +295,12 @@ export class TransactionComponent implements OnInit {
       .then((r) => {
         console.log(r);
         this.tempItIn++;
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -311,12 +311,12 @@ export class TransactionComponent implements OnInit {
       .viewInventory(this.direction, this.direction)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -327,12 +327,12 @@ export class TransactionComponent implements OnInit {
       .UpdateInventory(this.direction, 201, 150, this.direction)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }
@@ -343,12 +343,12 @@ export class TransactionComponent implements OnInit {
       .removeItemInventory(this.direction, this.direction, 201)
       .then((r) => {
         console.log(r);
-        alert('Tr comp 1 getting');
+        //alert('Tr comp 1 getting');
         // this.contract.success();  
       })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + e);
+        //alert('Tr comp 2 : ' + e);
         this.contract.failure("Getting failed");
       });
   }

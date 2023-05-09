@@ -24,7 +24,7 @@ export class AccountComponent {
     private threebox: ThreeBox,
     protected emartService: EmartService
   ) {
-    alert(this.emartService.getDirection() != undefined);
+    // //alert(this.emartService.getDirection() != undefined);
     if (this.emartService.getDirection() == undefined) {
       this.contract
         .connectAccount()
@@ -37,7 +37,7 @@ export class AccountComponent {
           //     console.log(response);
           //     this.profile = response;
           //     this.url = this.profile.image[0].contentUrl["/"];
-          //     alert("img url in acc :: "+this.url);
+          //     //alert("img url in acc :: "+this.url);
           //   });
           this.getImage(this.direction);
         })

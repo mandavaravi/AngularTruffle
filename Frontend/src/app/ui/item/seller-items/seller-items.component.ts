@@ -14,7 +14,7 @@ export class SellerItemsComponent implements OnInit {
   ngOnInit(): void {
 
     // if(JSON.parse(localStorage.getItem("currentSeller")).retailerId != 0){
-      alert(this.emartService.getDirection());
+      //alert(this.emartService.getDirection());
       this.emartService.getAllSelleritems(this.emartService.getDirection()).subscribe((response)=> 
         {
           this.allItems = response;

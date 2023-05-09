@@ -39,7 +39,7 @@ export class BillViewComponent implements OnInit {
     );
 
     let size = this.cartItems.length;
-    alert(JSON.stringify(this.cartItems[0]));
+    //alert(JSON.stringify(this.cartItems[0]));
     for (let i = 0; i < size; i++) {
       this.amount = this.amount + this.cartItems[i].itemPrice;
     }
@@ -48,36 +48,37 @@ export class BillViewComponent implements OnInit {
   }
 
   addBill() {
-    alert(JSON.stringify(this.cartItems[0]));
+    //alert(JSON.stringify(this.cartItems[0]));
     console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';
 
     this.contract.trasnferEther(this.direction, this.cartItems[0]['retailerId'], this.amount).then((r) => {
       console.log(r);
-      alert('Tr comp 1 - 71');
+      //alert('Tr comp 1 - 71');
+      alert("Transacted to retailer");
       this.isTransferSucces = true;
 
       this.contract
         .placeOrder(this.direction, this.cartItems[0]['retailerId'], 501, this.amount)
         .then((r) => {
           console.log(r);
-          alert('place order comp 1 getting - 78');
-          // alert(this.orderIdCount + 1);  
+          //alert('place order comp 1 getting - 78');
+          // //alert(this.orderIdCount + 1);  
           this.emartService.addBill(this.direction, this.orderIdCount + 1).subscribe(
             (res) => {
               this.orderIdCount += 1;
-              alert('place succsess- 83');
+              //alert('place succsess- 83');
               for(let i=0; i<this.cartItems.length; i++){
-                this.cartItems = this.emartService.deleteCartItem(this.cartItems[i], this.emartService.getDirection()).subscribe(
+                this.emartService.deleteCartItem(this.cartItems[i], this.emartService.getDirection()).subscribe(
                   (res) => {
                     console.log(res);
-                    alert('delete succsess - 88');
+                    //alert('delete succsess - 88');
                   },
                   (err) =>{
                     console.log(err.status);
-                    alert('delete fail - 92');
+                    //alert('delete fail - 92');
                     if(err.status == 200){
-                      alert('delete fail - 94');
+                      //alert('delete fail - 94');
                     }
                   }
                 );
@@ -87,7 +88,7 @@ export class BillViewComponent implements OnInit {
               console.log(err);
               if (err.status == 200) {
                 this.orderIdCount += 1;
-                alert('place succsess');
+                //alert('place succsess');
                 this.router.navigate(['bill-list']);
               }
             }
@@ -96,7 +97,7 @@ export class BillViewComponent implements OnInit {
         })
         .catch((e) => {
           console.log(e);
-          alert('place order comp 2 : ' + e);
+          //alert('place order comp 2 : ' + e);
           this.contract.failure("Getting failed");
         });
 
@@ -104,7 +105,7 @@ export class BillViewComponent implements OnInit {
     })
       .catch((e) => {
         console.log(e);
-        alert('Tr comp 2 : ' + 2);
+        //alert('Tr comp 2 : ' + 2);
         this.contract.failure("Transaction failed");
       });
   }
@@ -112,21 +113,21 @@ export class BillViewComponent implements OnInit {
   // sendEth(e) {
   //   console.log(e);
   //   this.address = this.transactionForm.value.sendaddress;
-  //   alert(this.address);
+  //   //alert(this.address);
   //   this.amount = this.transactionForm.value.amount;
-  //   alert(this.amount);
-  //   alert(this.direction);
+  //   //alert(this.amount);
+  //   //alert(this.direction);
 
   //   this.contract
   //     .trasnferEther(this.direction, this.address, this.amount)
   //     .then((r) => {
   //       console.log(r);
-  //       alert('Tr comp 1');
+  //       //alert('Tr comp 1');
   //       this.contract.success();
   //     })
   //     .catch((e) => {
   //       console.log(e);
-  //       alert('Tr comp 2 : ' + 2);
+  //       //alert('Tr comp 2 : ' + 2);
   //       this.contract.failure("Transaction failed");
   //     });
   // }
