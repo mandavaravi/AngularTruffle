@@ -63,7 +63,7 @@ export class BillViewComponent implements OnInit {
         .then((r) => {
           console.log(r);
           //alert('place order comp 1 getting - 78');
-          // //alert(this.orderIdCount + 1);  
+          // //alert(this.orderIdCount + 1);   
           this.emartService.addBill(this.direction, this.orderIdCount + 1).subscribe(
             (res) => {
               this.orderIdCount += 1;
