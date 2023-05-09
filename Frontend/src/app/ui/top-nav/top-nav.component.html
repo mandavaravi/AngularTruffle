@@ -5,7 +5,7 @@
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-toolbar-row>
-      <span>Angular + Truffle = 💓ÐAPP</span>
+      <span>Insta cart</span>
     </mat-toolbar-row>
     <mat-nav-list>
       <mat-list-item [routerLink]="['/home']">
@@ -17,9 +17,42 @@
         Transactions
       </mat-list-item>
 
+      <!--  -->
+      <!-- <mat-list-item [routerLink]="['/item-list']">
+        Items List
+      </mat-list-item> -->
+      <mat-list-item [routerLink]="['/buyer-signup']">
+        <!-- <mat-icon>money</mat-icon> -->
+        buyer-signup
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/seller-signup']">
+        <!-- <mat-icon>home</mat-icon> -->
+        seller-signup
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/cart-list']">
+        <!-- <mat-icon>money</mat-icon> -->
+        cart-list
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/bill-list']">
+        <!-- <mat-icon>home</mat-icon> -->
+        bill-list
+      </mat-list-item>
+      <mat-list-item [routerLink]="['/seller-items']">
+        <!-- <mat-icon>money</mat-icon> -->
+        seller-items
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/seller-add-item']">
+        <!-- <mat-icon>money</mat-icon> -->
+        seller-add-item
+      </mat-list-item>
+      <!--  -->
+
     </mat-nav-list>
   </mat-sidenav>
- <mat-sidenav-content>
+ <mat-sidenav-content style="background-color: white; height: 100vh;">
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -27,13 +60,14 @@
         mat-icon-button
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon" style="width: 50px">menu</mat-icon>
       </button>
         <span>Angular Ðapp</span>
       <span class="example-spacer"></span>
       <button mat-icon-button [routerLink]="['/account']">
         <mat-icon>person</mat-icon>
       </button>
+     
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

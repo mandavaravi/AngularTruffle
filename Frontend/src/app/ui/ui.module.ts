@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 // Components
@@ -17,7 +18,17 @@ import { RouterModule} from "@angular/router";
 
 // Services
 import { ContractService } from "../services/contract/contract.service";
-import { ThreeBox } from "../services/3box.service"
+import { ThreeBox } from "../services/3box.service";
+import { ItemDisplayComponent } from './item/item-display/item-display.component';
+import { ItemListComponent } from './item/item-list/item-list.component';
+import { SellerAddItemComponent } from './item/seller-add-item/seller-add-item.component';
+import { SellerItemsComponent } from './item/seller-items/seller-items.component';
+import { CartListComponent } from './cart/cart-list/cart-list.component';
+import { BillListComponent } from './bill/bill-list/bill-list.component';
+import { BillViewComponent } from './bill/bill-view/bill-view.component';
+import { BuyerSignupComponent } from './user/buyer-signup/buyer-signup.component';
+import { SellerSignupComponent } from './user/seller-signup/seller-signup.component'
+import { EmartService } from '../services/instacart/emart.service';
 
 @NgModule({
   declarations: [
@@ -25,20 +36,33 @@ import { ThreeBox } from "../services/3box.service"
     HomeComponent,
     TopNavComponent,
     TransactionComponent,
-    ErrorComponent
+    ErrorComponent,
+    ItemDisplayComponent,
+    ItemListComponent,
+    SellerAddItemComponent,
+    SellerItemsComponent,
+    CartListComponent,
+    BillListComponent,
+    BillViewComponent,
+    BuyerSignupComponent,
+    SellerSignupComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(UiRoute),
     AppMaterialModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     TopNavComponent,
-    HomeComponent
+    HomeComponent,
+    
   ],
   providers: [
     ContractService,
+    EmartService,
     ThreeBox
   ],
 })

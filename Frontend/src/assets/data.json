@@ -1,0 +1,275 @@
+{
+    "itemsList": [
+        {
+            "itemId": 0,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "pricePerQuantity": 1000,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 1,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 2,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 3,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 4,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 5,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 6,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 7,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 8,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        },
+        {
+            "itemId": 9,
+            "itemName": "1st item",
+            "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "itemPrice": 10,
+            "quantity": 100,
+            "categoryId": "subCat-1",
+            "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+        }
+    ],
+    "retailersList": [
+        {
+            "retailerId": 0,
+            "retailerName": "1st Retailer",
+            "retailerImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "homeAddress": "1st Addr "
+        },
+        {
+            "retailerId": 1,
+            "retailerName": "2nd Retailer",
+            "retailerImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "homeAddress": "2nd Addr "
+        },
+        {
+            "retailerId": 2,
+            "retailerName": "3rd Retailer",
+            "retailerImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "homeAddress": "3rd Addr "
+        },
+        {
+            "retailerId": 3,
+            "retailerName": "4th Retailer",
+            "retailerImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+            "homeAddress": "4th Addr "
+        }
+    ],
+
+    "allUsersCarts": {
+        "0": [
+            {
+                "itemId": 0,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "pricePerQuantity": 1000,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 1,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 2,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            }
+        ]
+    },
+    "allUsersOrders": {
+
+    },
+    "allretailersInvs": {
+        "0": [
+            {
+                "itemId": 0,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "pricePerQuantity": 1000,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 1,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 2,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            }
+        ],
+        "1": [
+            {
+                "itemId": 3,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 4,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 5,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            }
+        ],
+        "2": [
+            {
+                "itemId": 6,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 7,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 8,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            },
+            {
+                "itemId": 9,
+                "itemName": "1st item",
+                "itemImage": "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png",
+                "itemPrice": 10,
+                "quantity": 100,
+                "categoryId": "subCat-1",
+                "retailerId": "0x67B82548B0d34cBc6d993583d6130e2a5f76C8EA"
+            }
+        ],
+        "3": []
+    },
+    "allCategories": [
+        {
+            "categoryId" : 101,
+            "categoryName" : "1st Cat"
+        },
+        {
+            "categoryId" : 102,
+            "categoryName" : "2nd Cat"
+        },
+        {
+            "categoryId" : 103,
+            "categoryName" : "3rd Cat"
+        },
+        {
+            "categoryId" : 104,
+            "categoryName" : "4th Cat"
+        }
+    ]
+}

@@ -1,0 +1,161 @@
+<div class="container">
+    <div class="row m-5">
+		<div class="col">
+			<div class="card card-width ">
+				<div class="card-header font-weight-bold">
+					<h3 style="color: #4a4a4a;">Registration</h3>
+				</div>
+                <div class="card-body">
+                    <form action="" #registerForm = 'ngForm'>
+
+						<div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='UserId' style="color: #4a4a4a;">User Id:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regUserId.errors?.required && regUserId.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter UserId
+									 </div> 
+									<input 
+										type='text' 
+										id='UserId' 
+										class="form-control"
+										name="UserId" 
+										#regUserId = "ngModel"  
+										[(ngModel)]='rUserId' 
+										placeholder="UserId goes here..."
+										required/>
+								</div> 
+							</div>
+						</div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Name' style="color: #4a4a4a;">Name:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regName.errors?.required && regName.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter name
+									 </div> 
+									<input 
+										type='text' 
+										id='Name' 
+										class="form-control"
+										name="Name" 
+										#regName= "ngModel"  
+										[(ngModel)]='rName' 
+										placeholder="Name goes here..."
+										required/>
+								</div> 
+							</div>
+						</div>
+                        <!-- <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='Password' style="color: #4a4a4a;">Password:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regPassword.errors?.required && regPassword.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Password
+									 </div> 
+									<input 
+										type='password' 
+										id='Password' 
+										class="form-control"
+										name="Password" 
+										#regPassword= "ngModel"  
+										[(ngModel)]='rPassword' 
+										placeholder="Set your password"
+										required/>
+								</div> 
+							</div>
+						</div>
+							  
+						<div class="row">
+                            <div class="col">
+                                <div class="form-group">
+									<label for='rePassword' style="color: #4a4a4a;">Re-Enter Password:</label>
+									<div class="small text-danger font-weight-light " *ngIf="regrePassword.errors?.required && regrePassword.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Re-Enter Password
+									 </div> 
+									 <div class="small text-danger font-weight-light " *ngIf="checkpass">
+										Please check the Password again!
+									 </div> 
+									<input 
+										type='password' 
+										id='rePassword' 
+										class="form-control"
+										name="rePassword" 
+										#regrePassword= "ngModel"  
+										[(ngModel)]='rrePassword' 
+										placeholder="Re-Type the password"
+										required/>
+								</div> 
+							</div>
+						</div> -->
+
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Address' style="color: #4a4a4a;">Address:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regAddress.errors?.required &&  regAddress.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Address
+									 </div>  
+                                    <input 
+										type='text'
+										class="form-control " 
+										id='Address' 
+										name="Address" 
+										#regAddress = "ngModel"
+										[(ngModel)]='rAddress'
+										placeholder="Address goes here..."
+										required/>
+								</div>
+								 
+                            </div>
+                        </div>
+
+                        <!-- <div class="row">
+							<div class="col">
+								<div class="form-group">
+									<label for='Mobile' style="color: #4a4a4a;">Mobile:</label>
+									<div class="small text-danger  font-weight-light"  *ngIf="regMobile.errors?.required &&  regMobile.touched"
+									style="display: inline-block; margin-left: 15px;">
+										Please Enter Mobile
+									 </div>  
+                                    <input 
+										type='number'
+										class="form-control " 
+										id='Mobile' 
+										name="Mobile"
+										#regMobile = "ngModel"
+										[(ngModel)]='rMobile'
+										placeholder="Mobile number here"
+										required/>
+								</div>
+								 
+                            </div>
+                        </div> -->
+
+
+                                 
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" 
+										class="btn btn-success"
+										(click)='addBuyer()'
+										[disabled] = '!registerForm.valid'
+										>Register
+								</button>
+                            </div>
+							<div class="col">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
