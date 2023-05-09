@@ -48,7 +48,6 @@ export class BillViewComponent implements OnInit {
   }
 
   addBill() {
-    let todayDate: Date = new Date();
     alert(JSON.stringify(this.cartItems[0]));
     console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';

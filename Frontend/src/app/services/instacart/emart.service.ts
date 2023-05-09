@@ -87,7 +87,7 @@ export class EmartService {
 
   addBill(originalAccount, orderId) {
     let temp = this.cartItems;
-    console.clear();
+    // console.clear();
     console.log(JSON.stringify(temp));
     this.cartItems = [];
     return this.http.post("https://my-service-1.onrender.com/order", {

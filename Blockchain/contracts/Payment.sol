@@ -404,7 +404,6 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         orderIdToDetails[orderId] = (temp);
 
         //NFT minting
-        // require(orderAmount >= 5, "Wont get any NFT");
         if (orderAmount >= 5) {
             uint256 tokenId = _tokenIdCounter.current();
             _tokenIdCounter.increment();

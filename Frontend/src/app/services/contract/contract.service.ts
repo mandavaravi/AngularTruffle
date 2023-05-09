@@ -37,13 +37,14 @@ export class ContractService {
       walletconnect: {
         package: WalletConnectProvider, // required
         options: {
-          infuraId: "27e484dcd9e3efcfd25a83a78777cdf1" // required
+          infuraId: "13210507435f43eba580f6f9d7ae9d5b" // required // 27e484dcd9e3efcfd25a83a78777cdf1
         }
       }
     };
+    
 
     this.web3Modal = new Web3Modal({
-      network: "mainnet", // optional
+      network: "sepolia", // optional
       cacheProvider: true, // optional
       providerOptions, // required
       theme: {
@@ -93,7 +94,7 @@ export class ContractService {
       paymentContract.setProvider(this.provider);
       paymentContract.deployed().then((instance) => {
         let finalAmount = this.web3.utils.toBN(amount)
-        console.log(finalAmount)
+        console.log(finalAmount + " :: " + destinyAccount + ' :: ' + originAccount);
         return instance.nuevaTransaccion(
           destinyAccount,
           {
