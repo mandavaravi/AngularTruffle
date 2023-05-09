@@ -38,16 +38,15 @@ export class BillViewComponent implements OnInit {
       }
     );
 
-    let size = this.cartItems.length;
-    //alert(JSON.stringify(this.cartItems[0]));
-    for (let i = 0; i < size; i++) {
-      this.amount = this.amount + this.cartItems[i].itemPrice;
-    }
-
 
   }
 
   addBill() {
+    let size = this.cartItems.length;
+    alert("bill view amnt :: " + this.amount);
+    for (let i = 0; i < size; i++) {
+      this.amount = this.amount + this.cartItems[i].itemPrice;
+    }
     //alert(JSON.stringify(this.cartItems[0]));
     console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';
@@ -62,29 +61,29 @@ export class BillViewComponent implements OnInit {
         .placeOrder(this.direction, this.cartItems[0]['retailerId'], 501, this.amount)
         .then((r) => {
           console.log(r);
-          //alert('place order comp 1 getting - 78');
+          alert('Order details updated in contract');
           // //alert(this.orderIdCount + 1);   
           this.emartService.addBill(this.direction, this.orderIdCount + 1).subscribe(
             (res) => {
               this.orderIdCount += 1;
               //alert('place succsess- 83');
-              for(let i=0; i<this.cartItems.length; i++){
+              for (let i = 0; i < size; i++) {
                 this.emartService.deleteCartItem(this.cartItems[i], this.emartService.getDirection()).subscribe(
                   (res) => {
                     console.log(res);
                     //alert('delete succsess - 88');
                   },
-                  (err) =>{
+                  (err) => {
                     console.log(err.status);
                     //alert('delete fail - 92');
-                    if(err.status == 200){
+                    if (err.status == 200) {
                       //alert('delete fail - 94');
                     }
                   }
                 );
               }
             },
-            (err) => { 
+            (err) => {
               console.log(err);
               if (err.status == 200) {
                 this.orderIdCount += 1;

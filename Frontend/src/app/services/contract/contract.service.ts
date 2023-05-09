@@ -57,13 +57,6 @@ export class ContractService {
     });
   }
 
-  public async initContractInstance(originAccount) {
-    const paymentContract = contract(tokenAbi);
-    paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
-    return payment;
-  }
-
   async connectAccount() {
     this.provider = await this.web3Modal.connect(); // set provider
     this.web3js = new Web3(this.provider); // create web3 instance
@@ -83,6 +76,13 @@ export class ContractService {
     const initialvalue = await this.web3js.eth.getBalance(accounts);
     this.balance = this.web3js.utils.fromWei(initialvalue, 'ether');
     return this.balance;
+  }
+
+  public async initContractInstance(originAccount) {
+    const paymentContract = contract(tokenAbi);
+    paymentContract.setProvider(this.provider);
+    let payment = await paymentContract.new({ from: originAccount[0] });
+    return payment;
   }
 
   // can use this for placeOrder methods
