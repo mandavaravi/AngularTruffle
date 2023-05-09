@@ -41,7 +41,7 @@ export class ContractService {
         }
       }
     };
-    
+
 
     this.web3Modal = new Web3Modal({
       network: "sepolia", // optional
@@ -93,13 +93,16 @@ export class ContractService {
       const paymentContract = contract(tokenAbi);
       paymentContract.setProvider(this.provider);
       paymentContract.deployed().then((instance) => {
-        let finalAmount = this.web3.utils.toBN(Math.floor(amount))
-        console.log(finalAmount + " :: " + destinyAccount + ' :: ' + originAccount);
+        // let finalAmount = this.web3.utils.toBN(Math.floor(amount));
+        // const amount = 0.001;
+        const weiAmount = this.web3.utils.toBN(this.web3.utils.toWei(amount.toString(), 'ether'));
+        console.log(weiAmount + " :: " + destinyAccount + ' :: ' + originAccount);
+        // this.web3.utils.toWei(finalAmount, 'ether')
         return instance.nuevaTransaccion(
           destinyAccount,
           {
             from: originAccount[0],
-            value: this.web3.utils.toWei(finalAmount, 'ether')
+            value: weiAmount
           }
         );
       }).then((status) => {
@@ -295,7 +298,7 @@ export class ContractService {
 
   // can use this for placeOrder methods
   async placeOrder(originAccount, destinyAccount, orderId, orderAmount) {
-    let finalAmount = this.web3.utils.toBN(Math.floor(orderAmount));
+    let finalAmount = (Math.floor(orderAmount));
     let balance = await this.payment.placeOrderNew(destinyAccount, orderId, finalAmount, { from: originAccount[0] });
     console.log('balance :: ' + balance);
     return balance;
