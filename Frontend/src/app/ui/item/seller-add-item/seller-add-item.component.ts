@@ -73,12 +73,13 @@ export class SellerAddItemComponent implements OnInit {
       this.emartService.updateItem([item], this.rRetailer).subscribe((response: any) => {
         console.log(response);
       });
-      this.router.navigate(['seller-items']);
+      this.router.navigate(['/seller-items']);
     }
     else {
       this.emartService.addItem([item], this.rRetailer).subscribe((response: any) => {
         console.log(response);
       });
+      this.router.navigate(['/home']);
     }
 
 

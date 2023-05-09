@@ -46,7 +46,7 @@ export class SellerSignupComponent implements OnInit {
     this.emartService.addSeller(seller).subscribe((response)=> 
       {
         seller = response;
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       }
     );
     // }
