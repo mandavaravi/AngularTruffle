@@ -43,20 +43,20 @@ export class EmartService {
   */
 
   getAllSellers() {
-    return this.http.post('http://localhost:3000/retailers', {});
+    return this.http.post('https://my-service-1.onrender.com/retailers', {});
   }
 
   getAllSelleritems(retailerId) {
-    // http://localhost:3000/add_update_inv
-    return this.http.post('http://localhost:3000/add_update_inv', { "type": "viewinv", "retailerId": retailerId });
+    // https://my-service-1.onrender.com/add_update_inv
+    return this.http.post('https://my-service-1.onrender.com/add_update_inv', { "type": "viewinv", "retailerId": retailerId });
   }
 
   addItem(item: any, retailerId) {
-    return this.http.post('http://localhost:3000/add_update_inv/', { "type": "add", "retailerId": retailerId, "itemList": item });
+    return this.http.post('https://my-service-1.onrender.com/add_update_inv/', { "type": "add", "retailerId": retailerId, "itemList": item });
   }
 
   updateItem(item: any, retailerId) {
-    return this.http.post('http://localhost:3000/add_update_inv/', { "type": "update", "retailerId": retailerId, "itemList": item });
+    return this.http.post('https://my-service-1.onrender.com/add_update_inv/', { "type": "update", "retailerId": retailerId, "itemList": item });
   }
 
   setLocalItems(itemsList: any) {
@@ -78,7 +78,7 @@ export class EmartService {
 
 
   getAllBills(buyerId): any {
-    return this.http.post('http://localhost:3000/order',
+    return this.http.post('https://my-service-1.onrender.com/order',
       {
         "type": "vieworder",
         "userId": buyerId+""
@@ -90,7 +90,7 @@ export class EmartService {
     console.clear();
     console.log(JSON.stringify(temp));
     this.cartItems = [];
-    return this.http.post("http://localhost:3000/order", {
+    return this.http.post("https://my-service-1.onrender.com/order", {
       "type": "add",
       "userId": originalAccount,
       "orderId": orderId,
@@ -109,7 +109,7 @@ export class EmartService {
   addToCart(itemObjArr, originalAccount) {
     // this.cartItems.push(itemObj);
     console.log(JSON.stringify(itemObjArr));
-    return this.http.post("http://localhost:3000/add_update_cart", {
+    return this.http.post("https://my-service-1.onrender.com/add_update_cart", {
       "type": "add",
       "userId": originalAccount,
       "itemList": itemObjArr
@@ -118,7 +118,7 @@ export class EmartService {
 
   getAllCart(originalAccount) {
     // return [].concat(this.cartItems);
-    return this.http.post("http://localhost:3000/add_update_cart", {
+    return this.http.post("https://my-service-1.onrender.com/add_update_cart", {
       "type": "viewcart",
       "userId": originalAccount
     });
@@ -129,7 +129,7 @@ export class EmartService {
   }
 
   deleteCartItem(itemObjArr, originalAccount) {
-    return this.http.post("http://localhost:3000/add_update_cart", {
+    return this.http.post("https://my-service-1.onrender.com/add_update_cart", {
       "type": "delete",
       "userId": originalAccount,
       "itemId": itemObjArr
@@ -137,7 +137,7 @@ export class EmartService {
   }
 
   updateCartItem(itemObjArr, originalAccount) {
-    return this.http.post("http://localhost:3000/add_update_cart", {
+    return this.http.post("https://my-service-1.onrender.com/add_update_cart", {
       "type": "update",
       "userId": originalAccount[0],
       "itemList": itemObjArr
@@ -166,7 +166,7 @@ export class EmartService {
   }
 
   addBuyer(buyer: any) {
-    return this.http.post('http://localhost:3000/newUser_Retailer', {
+    return this.http.post('https://my-service-1.onrender.com/newUser_Retailer', {
       "type": "user",
       "userId": buyer.userId,
       "userName": buyer.userName,
@@ -177,7 +177,7 @@ export class EmartService {
 
 
   addSeller(seller: any) {
-    return this.http.post('http://localhost:3000/newUser_Retailer', {
+    return this.http.post('https://my-service-1.onrender.com/newUser_Retailer', {
       "type": "retailer",
       "retailerId": seller.retailerId,
       "retailerName": seller.retailerName,
