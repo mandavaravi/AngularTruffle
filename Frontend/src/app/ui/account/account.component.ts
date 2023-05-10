@@ -47,7 +47,7 @@ export class AccountComponent {
             "Could't get the account data, please check if metamask is running correctly and refresh the page"
           );
         });
-    }
+    }  
 
     
     this.contract.getNfts(this.emartService.getDirection())
