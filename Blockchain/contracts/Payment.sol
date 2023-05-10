@@ -394,6 +394,10 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
 
     mapping(address => Nft[]) userToNft;
 
+    function getUserNfts(address _userId) public view returns(Nft[] memory){
+        return userToNft[_userId];
+    }
+
     function placeOrderNew(
         address retId,
         uint256 orderId,
@@ -404,7 +408,7 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         orderIdToDetails[orderId] = (temp);
 
         //NFT minting
-        if (orderAmount >= 5) {
+        if (orderAmount >= 30000000000000000) {
             uint256 tokenId = _tokenIdCounter.current();
             _tokenIdCounter.increment();
             _safeMint(from, tokenId);

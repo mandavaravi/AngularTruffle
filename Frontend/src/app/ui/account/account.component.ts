@@ -17,6 +17,7 @@ export class AccountComponent {
   profile;
   url;
   data;
+  ownedNfts;
 
   constructor(
     private contract: ContractService,
@@ -47,6 +48,15 @@ export class AccountComponent {
           );
         });
     }
+
+    
+    this.contract.getNfts(this.emartService.getDirection())
+    .then((r) => {
+      alert("Nfts :: "+JSON.stringify(r));
+      this.ownedNfts = r;
+    });
+
+
   }
 
   getImage(account) {

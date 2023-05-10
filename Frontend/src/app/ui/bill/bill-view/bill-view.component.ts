@@ -94,6 +94,9 @@ export class BillViewComponent implements OnInit {
                     },
                     (err) => {
                       console.log(err.status);
+                      if (i == size - 1) {
+                        this.router.navigate(['bill-list']);
+                      }
                       //alert('delete fail - 92');
                       if (err.status == 200) {
                         //alert('delete fail - 94');

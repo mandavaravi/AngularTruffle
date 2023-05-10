@@ -304,6 +304,13 @@ export class ContractService {
     return balance;
   }
 
+  // can use this for placeOrder methods
+  async getNfts(originAccount) {
+    let balance = await this.payment.getUserNfts(originAccount[0], { from: originAccount[0] });
+    console.log('balance :: ' + balance);
+    return balance;
+  }
+
 
 }
 
