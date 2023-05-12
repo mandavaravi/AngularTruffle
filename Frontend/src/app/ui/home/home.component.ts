@@ -18,9 +18,16 @@ export class HomeComponent implements OnInit {
   searchedRetailers: any;
   searchBar: string;
   direction: any;
+
+  isLoading: boolean = true;
   constructor(protected emartService: EmartService, protected router: Router, private contract: ContractService) {
     this.searchedRetailers = [];
     this.searchBar = '';
+  }
+
+
+  ngAfterViewInit(){
+    this.isLoading = false;
   }
 
   ngOnInit(): void {

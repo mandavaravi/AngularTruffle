@@ -81,7 +81,7 @@ export class ContractService {
   public async initContractInstance(originAccount) {
     const paymentContract = contract(tokenAbi);
     paymentContract.setProvider(this.provider);
-    let payment = await paymentContract.new({ from: originAccount[0] });
+    let payment = await paymentContract.new({ from: originAccount });
     return payment;
   }
 
@@ -101,7 +101,7 @@ export class ContractService {
         return instance.nuevaTransaccion(
           destinyAccount,
           {
-            from: originAccount[0],
+            from: originAccount,
             value: weiAmount
           }
         );
@@ -131,8 +131,8 @@ export class ContractService {
   public async getAll(originAccount) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getAll({ from: originAccount[0] });
+    // let payment = await paymentContract.new({ from:  originAccount });
+    let balance = await this.payment.getAll({ from: originAccount });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -142,8 +142,8 @@ export class ContractService {
   public async getItemById(originAccount, itemId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getItemById(itemId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.getItemById(itemId, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -152,8 +152,8 @@ export class ContractService {
   public async getAllItems(originAccount) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getAllItems({ from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.getAllItems({ from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -161,8 +161,8 @@ export class ContractService {
   public async addUser(originAccount, name, addr, userId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.addUser(userId, name, addr, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.addUser(userId, name, addr, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -170,8 +170,8 @@ export class ContractService {
   public async getAllUsers(originAccount) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getAllUsers({ from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.getAllUsers({ from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -179,8 +179,8 @@ export class ContractService {
   public async getUserById(originAccount, userId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getUserById(userId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.getUserById(userId, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -188,8 +188,8 @@ export class ContractService {
   public async addItemToCart(originAccount, userId, itemId, name, catId, price, quantity, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.addItemToCart(userId, itemId, name, catId, price, quantity, retailerId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.addItemToCart(userId, itemId, name, catId, price, quantity, retailerId, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -197,8 +197,8 @@ export class ContractService {
   public async viewCart(originAccount, userId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.viewCart(userId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.viewCart(userId, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -206,8 +206,8 @@ export class ContractService {
   public async updateCart(originAccount, userId, itemId, newQuant) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.updateCart(userId, itemId, newQuant, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.updateCart(userId, itemId, newQuant, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -215,8 +215,8 @@ export class ContractService {
   public async removeItemFromCart(originAccount, userId, itemId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.removeItemFromCart(userId, itemId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.removeItemFromCart(userId, itemId, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -224,8 +224,8 @@ export class ContractService {
   public async addRetailer(originAccount, retailerId, name, homeAddr) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.addRetailer(retailerId, name, homeAddr, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.addRetailer(retailerId, name, homeAddr, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -233,8 +233,8 @@ export class ContractService {
   public async getRetailerById(originAccount, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getRetailerById(retailerId[0], { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.getRetailerById(retailerId[0], { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -242,8 +242,8 @@ export class ContractService {
   public async getAllRetailer(originAccount) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.getAllRetailer({ from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.getAllRetailer({ from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -251,8 +251,8 @@ export class ContractService {
   public async addnewItemToInvt(originAccount, name, catId, price, quantity, retailerId, itemId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.addnewItemToInvt(name, catId, price, quantity, retailerId[0], itemId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.addnewItemToInvt(name, catId, price, quantity, retailerId[0], itemId, { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -260,8 +260,8 @@ export class ContractService {
   public async viewInventory(originAccount, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.viewInventory(retailerId[0], { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.viewInventory(retailerId[0], { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -269,8 +269,8 @@ export class ContractService {
   public async UpdateInventory(originAccount, itemId, newQuant, retailerId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.UpdateInventory(itemId, newQuant, retailerId[0], { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from: originAccount  });
+    let balance = await this.payment.UpdateInventory(itemId, newQuant, retailerId[0], { from: originAccount  });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -278,8 +278,8 @@ export class ContractService {
   public async removeItemInventory(originAccount, retailerId, itemId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.removeItemInventory(retailerId[0], itemId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from:  originAccount });
+    let balance = await this.payment.removeItemInventory(retailerId[0], itemId, { from:  originAccount });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -287,8 +287,8 @@ export class ContractService {
   public async viewOrdersByUserId(originAccount, userId) {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
-    // let payment = await paymentContract.new({ from: originAccount[0] });
-    let balance = await this.payment.viewOrdersByUserId(userId, { from: originAccount[0] });
+    // let payment = await paymentContract.new({ from:  originAccount });
+    let balance = await this.payment.viewOrdersByUserId(userId, { from:  originAccount });
     console.log('balance :: ' + balance);
     return balance;
   }
@@ -299,15 +299,15 @@ export class ContractService {
   // can use this for placeOrder methods
   async placeOrder(originAccount, destinyAccount, orderId, orderAmount) {
     let finalAmount = (Math.floor(orderAmount));
-    let balance = await this.payment.placeOrderNew(destinyAccount, orderId, finalAmount, { from: originAccount[0] });
+    let balance = await this.payment.placeOrderNew(destinyAccount, orderId, finalAmount, { from:  originAccount });
     console.log('balance :: ' + balance);
     return balance;
   }
 
   // can use this for placeOrder methods
   async getNfts(originAccount) {
-    console.log("orgAcc getNft :: "+originAccount[0]);
-    let balance = await this.payment.getUserNfts(originAccount[0], { from: originAccount[0] });
+    console.log("orgAcc getNft :: "+originAccount);
+    let balance = await this.payment.getUserNfts(originAccount, { from: originAccount });
     console.log('balance :: ' + balance);
     return balance;
   }

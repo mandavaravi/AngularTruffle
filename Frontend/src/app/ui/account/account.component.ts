@@ -34,12 +34,22 @@ export class AccountComponent {
           this.getDetails(this.direction);
           this.emartService.setDirection(this.direction);
           console.log(this.direction);
-          this.profile = this.threebox.getProfile(this.direction).then((response) => {
-              console.log(response);
-              this.profile = response;
-              this.url = this.profile.image[0].contentUrl["/"];
-              //alert("img url in acc :: "+this.url);
-            });
+          this.contract.getNfts(this.emartService.getDirection())
+          .then((r) => {
+            alert("Nfts :: "+JSON.stringify(r));
+            this.ownedNfts = r;
+          },
+          (err)=>{
+            alert('getnft');
+            console.log("get nft error : "+err);
+          }
+          ); 
+          // this.profile = this.threebox.getProfile(this.direction).then((response) => {
+          //     console.log(response);
+          //     this.profile = response;
+          //     this.url = this.profile.image[0].contentUrl["/"];
+          //     //alert("img url in acc :: "+this.url);
+          //   });
           this.getImage(this.direction);
         })
         .catch((error: any) => {
@@ -47,7 +57,7 @@ export class AccountComponent {
             "Could't get the account data, please check if metamask is running correctly and refresh the page"
           );
         });
-    }  
+    } 
     else{
       this.getDetails(this.direction);
       this.contract.getNfts(this.emartService.getDirection())
