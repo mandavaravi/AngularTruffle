@@ -40,18 +40,18 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         return 1000;
     }
 
-    function getAll() public pure returns (uint) {
-        return 1000;
-    }
+    // function getAll() public pure returns (uint) {
+    //     return 1000;
+    // }
 
-    event PayOrder(address payable _to, address payable _from, uint amt);
+    // event PayOrder(address payable _to, address payable _from, uint amt);
 
-    function pay(address payable _to) public payable returns (bool) {
-        to = _to;
-        to.transfer(msg.value);
-        emit PayOrder(to, from, msg.value);
-        return true;
-    }
+    // function pay(address payable _to) public payable returns (bool) {
+    //     to = _to;
+    //     to.transfer(msg.value);
+    //     emit PayOrder(to, from, msg.value);
+    //     return true;
+    // }
 
     ///
     /// only owner modifier is inherited from imported dependencies
@@ -385,16 +385,16 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         uint256 orderAmount;
     }
 
-    struct Nft {
+    struct NftStruct {
         uint256 tokenId;
         string image_link;
     }
 
     mapping(uint256 => OrderDetailsStruct) orderIdToDetails;
 
-    mapping(address => Nft[]) userToNft;
+    mapping(address => NftStruct[]) userToNft;
 
-    function getUserNfts(address _userId) public view returns(Nft[] memory){
+    function getUserNfts(address _userId) public view returns(NftStruct[] memory){
         return userToNft[_userId];
     }
 
@@ -408,11 +408,11 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         orderIdToDetails[orderId] = (temp);
 
         //NFT minting
-        if (orderAmount >= 30000000000000000) {
+        if (orderAmount >= 3000000000000000) { //0.003 eth
             uint256 tokenId = _tokenIdCounter.current();
             _tokenIdCounter.increment();
             _safeMint(from, tokenId);
-            Nft memory newNft = Nft(
+            NftStruct memory newNft = NftStruct(
                 tokenId,
                 "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png"
             );
