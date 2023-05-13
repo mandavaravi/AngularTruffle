@@ -9,7 +9,7 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 declare let require: any;
-const Web3 = require('web3');
+// const Web3 = require('web3');
 const tokenAbi = require('../../../../../Blockchain/build/contracts/Payment.json');
 // declare let window: any;
 
@@ -27,7 +27,7 @@ export class ContractService {
   accounts;
   allAccs;
   balance;
-  payment
+  payment;
 
   constructor(@Inject(WEB3) private web3: Web3, private snackbar: MatSnackBar) {
     console.log('_++_+_+_+_+_+_+_+_+_+_+');

@@ -12,12 +12,11 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
 
     using Counters for Counters.Counter;
 
-    uint256 public MINT_PRICE = 0.05 ether;
-    uint256 public MAX_SUPPLY = 100;
+    // uint256 public MAX_SUPPLY = 100;
 
     address payable destinoTransferencia;
     address payable from;
-    address payable to;
+    // address payable to;
 
     // uint montoTransferencia;
 
@@ -38,6 +37,93 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
 
     function verBalanceCuenta() public pure returns (uint) {
         return 1000;
+    }
+
+    Counters.Counter private _tokenIdCounter;
+
+    constructor() ERC721("Test2", "IC") {
+        // Start token ID at 1. By default is starts at 0.
+        _tokenIdCounter.increment();
+        from = payable(msg.sender);
+    }
+
+    //print
+    event LogMessage(string message);
+
+    function print(string memory message) public {
+        emit LogMessage(message);
+    }
+
+    uint256 orderIdCounter = 0;
+    mapping(address => uint256) userToOrderId;
+    // mapping(uint256 => ItemStruct[]) orderToDetails;
+
+    struct OrderDetailsStruct {
+        address retailerId;
+        uint256 orderAmount;
+    }
+
+    struct NftStruct {
+        uint256 tokenId;
+        string image_link;
+    }
+
+    mapping(uint256 => OrderDetailsStruct) orderIdToDetails;
+
+    mapping(address => NftStruct[]) userToNft;
+
+    function getUserNfts(
+        address _userId
+    ) public view returns (NftStruct[] memory) {
+        return userToNft[_userId];
+    }
+
+    function placeOrderNew(
+        address retId,
+        uint256 orderId,
+        uint256 orderAmount
+    ) public returns (bool) {
+        userToOrderId[from] = orderId;
+        OrderDetailsStruct memory temp = OrderDetailsStruct(retId, orderAmount);
+        orderIdToDetails[orderId] = (temp);
+
+        //NFT minting
+        if (orderAmount >= 3000000000000000) {
+            //0.003 eth
+            uint256 tokenId = _tokenIdCounter.current();
+            _tokenIdCounter.increment();
+            _safeMint(from, tokenId);
+            NftStruct memory newNft = NftStruct(
+                tokenId,
+                "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png"
+            );
+            userToNft[from].push(newNft);
+        }
+        return true;
+    }
+
+    //===============================================//
+    // ===== 5. Other Functions ===== //
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "ipfs://happyMonkeyBaseURI/";
+    }
+
+    function _beforeTokenTransfer(
+        address _from,
+        address _to,
+        uint256 _tokenId,
+        uint256 batchSize
+    ) internal virtual override(ERC721, ERC721Enumerable) {
+        super._beforeTokenTransfer(_from, _to, _tokenId, batchSize);
+    }
+
+    // The following functions are overrides required by Solidity.
+
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view override(ERC721, ERC721Enumerable) returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 
     // function getAll() public pure returns (uint) {
@@ -82,21 +168,6 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
     //         }
     //     }
     // }
-
-    Counters.Counter private _tokenIdCounter;
-
-    constructor() ERC721("Test2", "IC") {
-        // Start token ID at 1. By default is starts at 0.
-        _tokenIdCounter.increment();
-        from = payable(msg.sender);
-    }
-
-    //print
-    event LogMessage(string message);
-
-    function print(string memory message) public {
-        emit LogMessage(message);
-    }
 
     // struct ItemStruct {
     //     uint256 itemId;
@@ -376,51 +447,6 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
     //     }
     // }
 
-    uint256 orderIdCounter = 0;
-    mapping(address => uint256) userToOrderId;
-    // mapping(uint256 => ItemStruct[]) orderToDetails;
-
-    struct OrderDetailsStruct {
-        address retailerId;
-        uint256 orderAmount;
-    }
-
-    struct NftStruct {
-        uint256 tokenId;
-        string image_link;
-    }
-
-    mapping(uint256 => OrderDetailsStruct) orderIdToDetails;
-
-    mapping(address => NftStruct[]) userToNft;
-
-    function getUserNfts(address _userId) public view returns(NftStruct[] memory){
-        return userToNft[_userId];
-    }
-
-    function placeOrderNew(
-        address retId,
-        uint256 orderId,
-        uint256 orderAmount
-    ) public returns (bool) {
-        userToOrderId[from] = orderId;
-        OrderDetailsStruct memory temp = OrderDetailsStruct(retId, orderAmount);
-        orderIdToDetails[orderId] = (temp);
-
-        //NFT minting
-        if (orderAmount >= 3000000000000000) { //0.003 eth
-            uint256 tokenId = _tokenIdCounter.current();
-            _tokenIdCounter.increment();
-            _safeMint(from, tokenId);
-            NftStruct memory newNft = NftStruct(
-                tokenId,
-                "https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png"
-            );
-            userToNft[from].push(newNft);
-        }
-        return true;
-    }
-
     // function viewOrdersByUserId(
     //     address userId
     // ) public view returns (ItemStruct[] memory) {
@@ -467,28 +493,4 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
     //     }
 
     // }
-
-    //===============================================//
-    // ===== 5. Other Functions ===== //
-
-    function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://happyMonkeyBaseURI/";
-    }
-
-    function _beforeTokenTransfer(
-        address _from,
-        address _to,
-        uint256 _tokenId,
-        uint256 batchSize
-    ) internal virtual override(ERC721, ERC721Enumerable) {
-        super._beforeTokenTransfer(_from, _to, _tokenId, batchSize);
-    }
-
-    // The following functions are overrides required by Solidity.
-
-    function supportsInterface(
-        bytes4 interfaceId
-    ) public view override(ERC721, ERC721Enumerable) returns (bool) {
-        return super.supportsInterface(interfaceId);
-    }
 }

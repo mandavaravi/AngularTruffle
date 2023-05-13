@@ -44,12 +44,12 @@ export class AccountComponent {
             console.log("get nft error : "+err);
           }
           ); 
-          // this.profile = this.threebox.getProfile(this.direction).then((response) => {
-          //     console.log(response);
-          //     this.profile = response;
-          //     this.url = this.profile.image[0].contentUrl["/"];
-          //     //alert("img url in acc :: "+this.url);
-          //   });
+          this.profile = this.threebox.getProfile(this.direction).then((response) => {
+              console.log(response);
+              this.profile = response;
+              this.url = this.profile.image[0].contentUrl["/"];
+              alert("img url in acc :: "+this.url);
+            });
           this.getImage(this.direction);
         })
         .catch((error: any) => {
