@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.isLoading = false;
   }
 
@@ -39,6 +39,13 @@ export class HomeComponent implements OnInit {
         .then((value: any) => {
           this.direction = value;
           this.emartService.setDirection(this.direction);
+          this.emartService.getAllSellers().subscribe((response: any) => {
+            const retList = Object.values(response);
+            console.log('type : ' + (retList));
+            this.allRetailers = Array.from(retList);
+            console.log('type : ' + typeof (this.allRetailers[0]));
+            this.emartService.setLocalItems(this.allRetailers);
+          });
           //alert(this.direction);
         })
         .catch((error: any) => {
@@ -48,13 +55,15 @@ export class HomeComponent implements OnInit {
           );
         });
     }
-    this.emartService.getAllSellers().subscribe((response: any) => {
-      const retList = Object.values(response);
-      console.log('type : ' + (retList));
-      this.allRetailers = Array.from(retList);
-      console.log('type : ' + typeof (this.allRetailers[0]));
-      this.emartService.setLocalItems(this.allRetailers);
-    });
+    else {
+      this.emartService.getAllSellers().subscribe((response: any) => {
+        const retList = Object.values(response);
+        console.log('type : ' + (retList));
+        this.allRetailers = Array.from(retList);
+        console.log('type : ' + typeof (this.allRetailers[0]));
+        this.emartService.setLocalItems(this.allRetailers);
+      });
+    }
 
   }
 
