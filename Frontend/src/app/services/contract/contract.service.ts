@@ -132,7 +132,7 @@ export class ContractService {
     // const paymentContract = contract(tokenAbi);
     // paymentContract.setProvider(this.provider);
     // let payment = await paymentContract.new({ from:  originAccount });
-    let balance = await this.payment.getAll({ from: originAccount });
+    let balance = await this.payment.verBalanceCuenta({ from: originAccount });
     console.log('balance :: ' + balance);
     return balance;
   }

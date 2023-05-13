@@ -65,6 +65,16 @@ export class HomeComponent implements OnInit {
       });
     }
 
+    this.contract.getAll(this.emartService.getDirection())
+    .then((r) => {
+      alert("getAll :: "+JSON.stringify(r));
+    },
+    (err)=>{
+      alert('getAll');
+      console.log("getAll error : "+err);
+    }
+    );  
+
   }
 
   displayInv(retId: number) {
