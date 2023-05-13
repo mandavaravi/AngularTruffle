@@ -26,9 +26,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  ngAfterViewInit() {
-    this.isLoading = false;
-  }
+  // ngAfterViewInit() {
+  //   this.isLoading = false;
+  // }
 
   ngOnInit(): void {
     //alert('landed in home');
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
             this.allRetailers = Array.from(retList);
             console.log('type : ' + typeof (this.allRetailers[0]));
             this.emartService.setLocalItems(this.allRetailers);
+            this.isLoading = false;
             this.contract.getAll(this.emartService.getDirection())
             .then((r) => {
               alert("getAll :: "+JSON.stringify(r));

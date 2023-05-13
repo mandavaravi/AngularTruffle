@@ -61,6 +61,9 @@ export class ContractService {
     this.provider = await this.web3Modal.connect(); // set provider
     this.web3js = new Web3(this.provider); // create web3 instance
     this.accounts = await this.web3js.eth.getAccounts();
+    console.log('^^^^^^^^^^^^^^^^^^^^^^^^');
+    console.log('conAcc con Ser :: w3 eth accnts  ::  ' + JSON.stringify(this.accounts));
+    console.log('^^^^^^^^^^^^^^^^^^^^^^^^');
     this.initContractInstance(this.accounts).then((r) => {
       this.payment = r;
       console.log('conAcc from ser suc ::  ' + this.payment);
