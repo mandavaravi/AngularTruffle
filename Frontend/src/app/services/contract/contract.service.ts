@@ -62,9 +62,9 @@ export class ContractService {
     this.web3js = new Web3(this.provider); // create web3 instance
     this.accounts = await this.web3js.eth.getAccounts();
     console.log('^^^^^^^^^^^^^^^^^^^^^^^^');
-    console.log('conAcc con Ser :: w3 eth accnts  ::  ' + JSON.stringify(this.accounts));
+    console.log('conAcc con Ser :: w3 eth accnts  ::  ' + this.accounts[0]);
     console.log('^^^^^^^^^^^^^^^^^^^^^^^^');
-    this.initContractInstance(this.accounts).then((r) => {
+    this.initContractInstance(this.accounts[0]).then((r) => {
       this.payment = r;
       console.log('conAcc from ser suc ::  ' + this.payment);
     })
