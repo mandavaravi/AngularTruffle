@@ -26,7 +26,7 @@ export class AccountComponent {
     protected emartService: EmartService
   ) {
     // alert(this.emartService.getDirection() != undefined);
-    if (this.emartService.getDirection() == undefined) {
+    // if (this.emartService.getDirection() == undefined) {
       this.contract
         .connectAccount()
         .then((value: any) => {
@@ -57,20 +57,20 @@ export class AccountComponent {
             "Could't get the account data, please check if metamask is running correctly and refresh the page"
           );
         });
-    } 
-    else{
-      this.getDetails(this.direction);
-      this.contract.getNfts(this.emartService.getDirection())
-      .then((r) => {
-        alert("Nfts :: "+JSON.stringify(r));
-        this.ownedNfts = r;
-      },
-      (err)=>{
-        alert('getnft');
-        console.log("get nft error : "+err);
-      }
-      );  
-    }
+    // } 
+    // else{
+    //   this.getDetails(this.direction);
+    //   this.contract.getNfts(this.emartService.getDirection())
+    //   .then((r) => {
+    //     alert("Nfts :: "+JSON.stringify(r));
+    //     this.ownedNfts = r;
+    //   },
+    //   (err)=>{
+    //     alert('getnft');
+    //     console.log("get nft error : "+err);
+    //   }
+    //   );  
+    // }
 
   }
 

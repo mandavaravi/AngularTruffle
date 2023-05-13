@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     //alert('landed in home');
 
-    if (this.emartService.getDirection() == undefined) {
+    // if (this.emartService.getDirection() == undefined) {
       this.contract
         .connectAccount()
         .then((value: any) => {
@@ -45,6 +45,16 @@ export class HomeComponent implements OnInit {
             this.allRetailers = Array.from(retList);
             console.log('type : ' + typeof (this.allRetailers[0]));
             this.emartService.setLocalItems(this.allRetailers);
+            this.contract.getAll(this.emartService.getDirection())
+            .then((r) => {
+              alert("getAll :: "+JSON.stringify(r));
+            },
+            (err)=>{
+              alert('getAll');
+              console.log("getAll error : "+err);
+            }
+            );  
+        
           });
           //alert(this.direction);
         })
@@ -54,26 +64,16 @@ export class HomeComponent implements OnInit {
             "Could't get the account data, please check if metamask is running correctly and refresh the page"
           );
         });
-    }
-    else {
-      this.emartService.getAllSellers().subscribe((response: any) => {
-        const retList = Object.values(response);
-        console.log('type : ' + (retList));
-        this.allRetailers = Array.from(retList);
-        console.log('type : ' + typeof (this.allRetailers[0]));
-        this.emartService.setLocalItems(this.allRetailers);
-      });
-    }
-
-    this.contract.getAll(this.emartService.getDirection())
-    .then((r) => {
-      alert("getAll :: "+JSON.stringify(r));
-    },
-    (err)=>{
-      alert('getAll');
-      console.log("getAll error : "+err);
-    }
-    );  
+    // }
+    // else {
+    //   this.emartService.getAllSellers().subscribe((response: any) => {
+    //     const retList = Object.values(response);
+    //     console.log('type : ' + (retList));
+    //     this.allRetailers = Array.from(retList);
+    //     console.log('type : ' + typeof (this.allRetailers[0]));
+    //     this.emartService.setLocalItems(this.allRetailers);
+    //   });
+    // }
 
   }
 
