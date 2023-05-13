@@ -30,9 +30,6 @@ export class ContractService {
   payment;
 
   constructor(@Inject(WEB3) private web3: Web3, private snackbar: MatSnackBar) {
-    console.log('_++_+_+_+_+_+_+_+_+_+_+');
-    console.log('Con Ser counter :: ' + this.counter);
-    console.log('_++_+_+_+_+_+_+_+_+_+_+');
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider, // required
