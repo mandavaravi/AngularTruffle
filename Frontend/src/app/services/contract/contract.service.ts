@@ -21,6 +21,7 @@ export class ContractService {
   public accountsObservable = new Subject<string[]>();
   public compatible: boolean;
   public counter = 0;
+  
   web3Modal;
   web3js;
   provider;
