@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ContractService } from 'src/app/services/contract/contract.service';
 import { EmartService } from 'src/app/services/instacart/emart.service';
 
-@Component({
+@Component({ 
   selector: 'app-bill-view',
   templateUrl: './bill-view.component.html',
   styleUrls: ['./bill-view.component.scss']
@@ -54,18 +54,18 @@ export class BillViewComponent implements OnInit {
       this.amount = this.amount + this.cartItems[i].itemPrice;
     }
     //alert(JSON.stringify(this.cartItems[0]));
-    console.log('addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
+    console.log(this.direction + ' :: addBill 1 :: ' + this.cartItems[0]['retailerId'] + ' :: amnt :: ' + this.amount);
     // let retAddr = '';
 
-    this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
-      (res) => {
-        //alert('all bills : ' + JSON.stringify(res));
+    // this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
+    //   (res) => {
+    //     //alert('all bills : ' + JSON.stringify(res));
+    //     console.log(JSON.stringify(res));
+    //     let allorderIds = Object.keys(res);
+    //     this.orderIdCount = +allorderIds[allorderIds.length - 1];
 
-        let allorderIds = Object.keys(res);
-        this.orderIdCount = +allorderIds[allorderIds.length - 1];
-
-      }
-    );
+    //   }
+    // );
 
     this.contract.trasnferEther(this.direction, this.cartItems[0]['retailerId'], this.amount).then((r) => {
       console.log(r);

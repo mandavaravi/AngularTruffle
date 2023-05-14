@@ -9,7 +9,7 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 declare let require: any;
-const Web3 = require('web3');
+// const Web3 = require('web3');
 const tokenAbi = require('../../../../../Blockchain/build/contracts/Payment.json');
 // declare let window: any;
 
@@ -41,7 +41,7 @@ export class ContractService {
 
 
     this.web3Modal = new Web3Modal({
-      network: "sepolia", // optional
+      network: "", // optional
       cacheProvider: true, // optional
       providerOptions, // required
       theme: {
@@ -97,8 +97,9 @@ export class ContractService {
         // const amount = 0.001;
         const weiAmount = this.web3.utils.toBN(this.web3.utils.toWei(amount.toString(), 'ether'));
         console.log(weiAmount + " :: " + destinyAccount + ' :: ' + originAccount);
+        console.log((instance));
         // this.web3.utils.toWei(finalAmount, 'ether')
-        return instance.nuevaTransaccion(
+        return instance.methods.nuevaTransaccion(
           destinyAccount,
           {
             from: originAccount,
