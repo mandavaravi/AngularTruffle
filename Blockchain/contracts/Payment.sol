@@ -26,16 +26,14 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         uint montoTransferencia
     );
 
-    function nuevaTransaccion(
-        address payable _destinoTransferencia
-    ) public payable returns (bool) {
-        destinoTransferencia = _destinoTransferencia;
+    function nuevaTransaccion(address _destinoTransferencia) public payable returns(bool) {
+        destinoTransferencia = payable(_destinoTransferencia);
         destinoTransferencia.transfer(msg.value);
         emit TransferirMonto(destinoTransferencia, from, msg.value);
         return true;
     }
 
-    function verBalanceCuenta() public pure returns (uint) {
+    function verBalanceCuenta() public pure returns(uint) {
         return 1000;
     }
 
@@ -72,17 +70,11 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
 
     mapping(address => NftStruct[]) userToNft;
 
-    function getUserNfts(
-        address _userId
-    ) public view returns (NftStruct[] memory) {
+    function getUserNfts(address _userId) public view returns (NftStruct[] memory) {
         return userToNft[_userId];
     }
 
-    function placeOrderNew(
-        address retId,
-        uint256 orderId,
-        uint256 orderAmount
-    ) public returns (bool) {
+    function placeOrderNew(address retId, uint256 orderId,uint256 orderAmount) public returns (bool) {
         userToOrderId[from] = orderId;
         OrderDetailsStruct memory temp = OrderDetailsStruct(retId, orderAmount);
         orderIdToDetails[orderId] = (temp);
@@ -109,20 +101,13 @@ contract Payment is ERC721, ERC721Enumerable, Ownable {
         return "ipfs://happyMonkeyBaseURI/";
     }
 
-    function _beforeTokenTransfer(
-        address _from,
-        address _to,
-        uint256 _tokenId,
-        uint256 batchSize
-    ) internal virtual override(ERC721, ERC721Enumerable) {
+    function _beforeTokenTransfer(address _from,address _to,uint256 _tokenId,uint256 batchSize) internal virtual override(ERC721, ERC721Enumerable) {
         super._beforeTokenTransfer(_from, _to, _tokenId, batchSize);
     }
 
     // The following functions are overrides required by Solidity.
 
-    function supportsInterface(
-        bytes4 interfaceId
-    ) public view override(ERC721, ERC721Enumerable) returns (bool) {
+    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721Enumerable) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 

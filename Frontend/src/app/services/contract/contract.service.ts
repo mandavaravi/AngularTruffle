@@ -63,7 +63,7 @@ export class ContractService {
     console.log('^^^^^^^^^^^^^^^^^^^^^^^^');
     this.initContractInstance(this.accounts[0]).then((r) => {
       this.payment = r;
-      console.log('conAcc from ser suc ::  ' + JSON.stringify(this.payment));
+      console.log('conAcc from ser suc ::  ' + this.payment);
     })
       .catch((e) => {
         console.log('conAcc from ser err:: ' + e);
