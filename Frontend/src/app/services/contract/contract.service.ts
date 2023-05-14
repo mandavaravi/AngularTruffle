@@ -94,6 +94,8 @@ export class ContractService {
       paymentContract.deployed().then((instance) => {
         // let finalAmount = this.web3.utils.toBN(amount);
         // console.log('finalAmnt :: ' + finalAmount);
+        
+        // 13000000000000001.04275SepoliaETH
         const weiAmount = this.web3.utils.toBN(this.web3.utils.toWei(amount.toString(), 'ether'));
         console.log(weiAmount + " :: " + destinyAccount + ' :: ' + originAccount);
         console.log(' :: SC instance :: \n '+(instance));
@@ -101,7 +103,7 @@ export class ContractService {
           destinyAccount,
           {
             from: originAccount[0],
-            value: this.web3.utils.toWei(weiAmount, 'ether')
+            value: weiAmount
           }
         );
       }).then((status) => {
