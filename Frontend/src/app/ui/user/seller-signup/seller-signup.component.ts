@@ -41,7 +41,7 @@ export class SellerSignupComponent implements OnInit {
       "retailerName" : this.rName,
       "homeAddress" : this.rAddress
     }
-    alert(JSON.stringify(seller));
+    // alert(JSON.stringify(seller));
 
     this.emartService.addSeller(seller).subscribe((response)=> 
       {

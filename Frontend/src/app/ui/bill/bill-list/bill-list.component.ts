@@ -26,10 +26,10 @@ export class BillListComponent implements OnInit {
 
     // this.currentBuyer = this.emartService.getCurrentBuyer();
     this.allBills = [];
-    alert('bill list -- '+this.emartService.getDirection());
+    // alert('bill list -- '+this.emartService.getDirection());
     this.emartService.getAllBills(this.emartService.getDirection()).subscribe(
       (res) => {
-        alert('all bills : ' + JSON.stringify(res));
+        // alert('all bills : ' + JSON.stringify(res));
         this.allBills = (Object.values(res));
         this.allorderIds = Object.keys(res);
         console.clear();
@@ -37,7 +37,8 @@ export class BillListComponent implements OnInit {
         // this.emartService.setAllBills(this.allBills);
 
         if (this.allBills.length != 0) {
-          alert('true');
+          // alert('true');
+          console.log("got bills")
           this.isEmpty = true;
         }
         else {

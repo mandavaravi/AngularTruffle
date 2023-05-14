@@ -28,9 +28,9 @@ export class ItemDisplayComponent implements OnInit {
   }
 
   addToCart(item: any) {
-    alert(JSON.stringify([item]) + " :::: " + this.emartService.getDirection());
+    // alert(JSON.stringify([item]) + " :::: " + this.emartService.getDirection());
     this.emartService.addToCart([item], this.emartService.getDirection()).subscribe((response: any) => {
-      alert('add success');
+      // alert('add success');
     });
     this.router.navigate(['item-list']);
   }
