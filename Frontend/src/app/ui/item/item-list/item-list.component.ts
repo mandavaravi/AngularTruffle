@@ -30,7 +30,7 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit(): void {
     // if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
-      alert("item list ngOn");
+      // alert("item list ngOn");
       this.activatedRoute.paramMap.subscribe(
         (param) => {
           let id = param.get('iId');
@@ -52,9 +52,9 @@ export class ItemListComponent implements OnInit {
   }
 
   addToCart(item: any){
-    alert(JSON.stringify([item]) + " :::: " + this.emartService.getDirection());
+    // alert(JSON.stringify([item]) + " :::: " + this.emartService.getDirection());
     this.emartService.addToCart([item], this.emartService.getDirection()).subscribe((response: any) => {
-      alert('add success');
+      // alert('add success');
     });
   }
 
@@ -71,7 +71,7 @@ export class ItemListComponent implements OnInit {
       }
 
       if(this.filteredItems.length == 0){
-        alert("No items in that range");
+        // alert("No items in that range");
         this.isfiltered = false;
       }
       else{
@@ -79,7 +79,7 @@ export class ItemListComponent implements OnInit {
       }
     }
     else{
-      alert("Enter a valid range");
+      // alert("Enter a valid range");
       document.getElementById("ToPrice").focus();
       this.isfiltered = false;
     }

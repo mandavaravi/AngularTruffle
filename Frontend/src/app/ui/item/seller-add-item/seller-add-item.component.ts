@@ -41,7 +41,7 @@ export class SellerAddItemComponent implements OnInit {
   ngOnInit(): void {
     let temp = this.emartService.getEditedItem();
     if (temp != undefined) {
-      alert(JSON.stringify(temp));
+      // alert(JSON.stringify(temp));
       this.rName = temp.itemName;
       this.rId = temp.itemId;
       this.rImage = temp.itemImage;
@@ -79,9 +79,9 @@ export class SellerAddItemComponent implements OnInit {
     //   alert(JSON.stringify( jsonData['allretailersInvs'][this.rRetailer][0]));
     // });
 
-    alert(JSON.stringify([item]) + " :: " + this.rRetailer);
+    // alert(JSON.stringify([item]) + " :: " + this.rRetailer);
     if (this.isEdit) {
-      alert(this.rStock);
+      // alert(this.rStock);
       this.emartService.updateItem([item], this.rRetailer).subscribe((response: any) => {
         console.log(response);
       });

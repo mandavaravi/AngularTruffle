@@ -21,7 +21,7 @@ export class ContractService {
   public accountsObservable = new Subject<string[]>();
   public compatible: boolean;
   public counter = 0;
-  
+
   web3Modal;
   web3js;
   provider;
@@ -88,18 +88,20 @@ export class ContractService {
   // can use this for placeOrder methods
   trasnferEther(originAccount, destinyAccount, amount) {
     const that = this;
-
     return new Promise((resolve, reject) => {
       const paymentContract = contract(tokenAbi);
       paymentContract.setProvider(this.provider);
       paymentContract.deployed().then((instance) => {
-        let finalAmount = this.web3.utils.toBN(amount)
-        console.log(finalAmount)
+        // let finalAmount = this.web3.utils.toBN(amount);
+        // console.log('finalAmnt :: ' + finalAmount);
+        const weiAmount = this.web3.utils.toBN(this.web3.utils.toWei(amount.toString(), 'ether'));
+        console.log(weiAmount + " :: " + destinyAccount + ' :: ' + originAccount);
+        console.log(' :: SC instance :: \n '+(instance));
         return instance.nuevaTransaccion(
           destinyAccount,
           {
             from: originAccount[0],
-            value: this.web3.utils.toWei(finalAmount, 'ether')
+            value: this.web3.utils.toWei(weiAmount, 'ether')
           }
         );
       }).then((status) => {

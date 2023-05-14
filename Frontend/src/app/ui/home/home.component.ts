@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
         .then((value: any) => {
           this.direction = value;
           this.emartService.setDirection(this.direction);
-          alert(this.direction);
+          // alert(this.direction);
         })
         .catch((error: any) => {
           console.log(error);
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
       this.isSearched = true;
       for (let item of this.allRetailers) {
         let temp: string = item.retailerName;
-        alert('search');
+        // alert('search');
         temp = temp.toLowerCase();
         if (temp.includes(this.searchBar.toLowerCase())) {
           this.searchedRetailers.push(item);
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
       else {
         this.isSearched = true;
       }
-      alert(this.searchedRetailers.length);
+      // alert(this.searchedRetailers.length);
     }
     else {
       document.getElementById("searchBar").focus();

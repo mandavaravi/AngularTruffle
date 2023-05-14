@@ -24,7 +24,7 @@ export class AccountComponent {
     private threebox: ThreeBox,
     protected emartService: EmartService
   ) {
-    alert(this.emartService.getDirection() != undefined);
+    // alert(this.emartService.getDirection() != undefined);
     if (this.emartService.getDirection() == undefined) {
       this.contract
         .connectAccount()

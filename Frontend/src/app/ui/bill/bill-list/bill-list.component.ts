@@ -32,7 +32,7 @@ export class BillListComponent implements OnInit {
         // alert('all bills : ' + JSON.stringify(res));
         this.allBills = (Object.values(res));
         this.allorderIds = Object.keys(res);
-        console.clear();
+        // console.clear();
         console.log(this.allBills[0][0]);
         // this.emartService.setAllBills(this.allBills);
 
